@@ -7,6 +7,16 @@ public class ContactInformation {
 	private String landline;
 	private String officeNumber;
 	
+	
+	public ContactInformation(String emailAddress,String phoneNumber,String landline, String officeNumber){
+		
+		this.emailAddress = emailAddress;
+		this.phoneNumber = phoneNumber;
+		this.landline = landline;
+		this.officeNumber = officeNumber;
+		
+	}
+	
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -31,6 +41,8 @@ public class ContactInformation {
 	public void setOfficeNumber(String officeNumber) {
 		this.officeNumber = officeNumber;
 	}
+	
+	
 
 	
 }

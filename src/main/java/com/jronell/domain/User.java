@@ -1,5 +1,6 @@
 package com.jronell.domain;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,41 +31,74 @@ public class User {
 	private InterestList interest; 
 	private EventList events;
 	
-	User(int id){
+	
+	public User(int id){
 		this.id = id;
 	}
 	
 	public void addUserPersonalInformation(int id, String firstName, String lastName, String middleName, Gender gender,
 			Date dateOfBirth, int age)
 	{
-		
 		this.firstName  = firstName;
 		this.lastName = lastName;
 		this.middleName = middleName;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.age = age;
-	
-			
+		
 	}
-	public void addCredentials(String username,String password){
+	public void setCredentials(String username,String password, UserType userType, Status status){
 		
 		this.username = username;
 		this.password = password;
+		this.userType = userType;
+		this.status = status;
+		
+		
 	}
-	public void addAddress(Address address){
+	public void setAddress(Address address){
 		this.address = address;
 	}
-	public void addcontactInformation(ContactInformation contactInformation){
+	public void setcontactInformation(ContactInformation contactInformation){
 		this.contactInformation = contactInformation;
 	}
 
-	public void addInterest(InterestList newInterestList) {
+	public void setInterest(InterestList newInterestList) {
 		// TODO Auto-generated method stub
 		this.interest = newInterestList;
+	}
+
+	public EventList getEvents() {
+		return events;
+	}
+
+	public void setEvents(EventList events) {
+		this.events = events;
+	}
+
+	public Status getStatus() {
+		// TODO Auto-generated method stub
+		return this.status;
 	}
 	
 
 	
+	public StringBuilder displayUserInfo(){
+	
+		StringBuilder userInfo = new StringBuilder();
+		
+		userInfo.append(this.firstName + " " + this.lastName +  "Is registered " +
+		                this.username + "with " + this.password + "Password" );
+		              
+		
+		return userInfo;
+	}
+
+	public void getInterestList() {
+		// TODO Auto-generated method stub
+		 for(Interest i:  interest.getInterestList()){
+			 System.out.println(i.getInterestName());
+		 }
+	}
 	
 }

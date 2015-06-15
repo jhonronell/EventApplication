@@ -9,5 +9,10 @@ public class Interest {
 		this.interestName = interest;
 		
 	}
+	
+	public String getInterestName(){
+		
+		return this.interestName;
+	}
 
 }

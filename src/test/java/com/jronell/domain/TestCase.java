@@ -5,8 +5,14 @@ import java.sql.Date;
 
 import org.junit.Test;
 
-import com.jronell.domain.User.Gender;
-import com.jronell.domain.User.UserType;
+import com.jronell.model.Address;
+import com.jronell.model.ContactInformation;
+import com.jronell.model.Interest;
+import com.jronell.model.InterestList;
+import com.jronell.model.Status;
+import com.jronell.model.User;
+import com.jronell.model.User.Gender;
+import com.jronell.model.User.UserType;
 
 
 public class TestCase {

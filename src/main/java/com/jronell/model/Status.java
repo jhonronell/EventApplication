@@ -1,4 +1,4 @@
-package com.jronell.domain;
+package com.jronell.model;
 
 public enum Status {
 	

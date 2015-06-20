@@ -9,9 +9,9 @@ import java.util.Set;
 
 public class User {
 
-	enum UserType{ CLIENT, ADMIN };
+	public enum UserType{ CLIENT, ADMIN };
 	
-	enum Gender { MALE, FEMALE } 
+	public enum Gender { MALE, FEMALE } 
 	
 	private String firstName;
 	private String lastName;
@@ -36,6 +36,11 @@ public class User {
 		this.id = id;
 	}
 	
+	public int getUserId(){
+
+  	return this.id;
+		
+	}
 	public void addUserPersonalInformation(int id, String firstName, String lastName, String middleName, Gender gender,
 			Date dateOfBirth, int age)
 	{
@@ -47,11 +52,11 @@ public class User {
 		this.age = age;
 		
 	}
-	public void setCredentials(String username,String password, UserType userType, Status status){
+	public void setCredentials(String username,String password, UserType usertype, Status status){
 		
 		this.username = username;
 		this.password = password;
-		this.userType = userType;
+		this.userType = usertype;
 		this.status = status;
 		
 		
@@ -80,9 +85,7 @@ public class User {
 		// TODO Auto-generated method stub
 		return this.status;
 	}
-	
-
-	
+		
 	public StringBuilder displayUserInfo(){
 	
 		StringBuilder userInfo = new StringBuilder();
@@ -93,7 +96,11 @@ public class User {
 		
 		return userInfo;
 	}
-
+	public String getUsername()
+	{	
+		return this.username;
+	}
+	
 	public void getInterestList() {
 		// TODO Auto-generated method stub
 		 for(Interest i:  interest.getInterestList()){

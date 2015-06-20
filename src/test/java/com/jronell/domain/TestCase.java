@@ -1,10 +1,12 @@
 package com.jronell.domain;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.sql.Date;
+import java.sql.*;
 
 import org.junit.Test;
 
+import com.jronell.jdbc.ConnectionManager;
 import com.jronell.model.Address;
 import com.jronell.model.ContactInformation;
 import com.jronell.model.Interest;
@@ -19,6 +21,35 @@ public class TestCase {
 
 	private static final String NONE = null;
 	@Test
+	
+	public void testDatabaseConnection() throws ClassNotFoundException, SQLException{
+		
+		ConnectionManager conManager = new ConnectionManager();	
+		Connection conn = conManager.getConnection();
+		
+		Statement myStatement = null;
+		try {
+		
+			myStatement = conn.createStatement();
+			ResultSet myRs = myStatement.executeQuery("select * from events");
+			
+			while (myRs.next()) {
+				System.out.println(myRs.getString("username") + "  "
+						+ myRs.getString("password"));
+
+			}	
+		conManager.getConnection().close();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+				
+
+		
+	}
+	
 	public void addToInterestList() {
 		// TODO Auto-generated constructor stub
 		

@@ -2,6 +2,7 @@ package com.jronell.model;
 
 public class Address{
 	
+	public int addressId;
 	private String street;
 	private String brgy;
 	private String city;

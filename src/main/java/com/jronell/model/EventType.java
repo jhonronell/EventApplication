@@ -1,5 +1,7 @@
 package com.jronell.model;
 
-public class EventType {
+public enum EventType {
 
+	PAID,DIY,KKB
+	
 }

@@ -7,13 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@page import="com.jronell.model.User"%>  
+Hello
+<%@page import="com.jronell.model.Event"%>  
   
+<p>You are successfully logged in!</p>  
 <% 
-User user=(User)request.getAttribute("user");  
-out.print("Welcome, "+ user.getUsername() );  
-out.print("Welcome, "+ user.getEvents() );
-out.print("Welcome, "+ user.getUsername() );
+Event event1=(Event) request.getAttribute("event1");  
+out.print("Welcome, "+event1.getName());  
 %> 
+
+</body>
+</html>
 </body>
 </html>

@@ -1,8 +1,6 @@
-package com.jronell.domain;
+package com.jronell.service;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import com.jronell.dao.impl.EventDaoImpl;
 import com.jronell.model.Event;
@@ -10,12 +8,10 @@ import com.jronell.model.EventType;
 import com.jronell.model.Status;
 import com.jronell.model.User;
 
-public class EventDaoTest {
+public class eventService {
 
-	@Test
-	public void InsertDataToDB() {
 		
-		//Address address = new Address("San Lorenzo","Kapitolyo","Pasig","boystown","NCR","Manila","PH");
+	public void createEvent(){
 		User user1 = new User(1);
 		
 		assertEquals(user1.getUserId(),1);
@@ -25,19 +21,9 @@ public class EventDaoTest {
 		
 		EventDaoImpl eventDao = new EventDaoImpl();
 		eventDao.addEvent( event1  );
-		
-		
-	}
 	
-	@Test
-	public void testEquality(){
-		
-		
-		assertEquals("DIY",EventType.DIY.toString());
-			
-		
 	}
 	
 	
-
+	
 }

@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
+<a href="EventForm.jsp"> Manage Event </a>
+
+
+
 <form action="user" method="post">  
 Name:<input type="text" name="name"><br>  
 Password:<input type="password" name="password"><br>  

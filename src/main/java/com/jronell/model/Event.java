@@ -17,7 +17,7 @@ public class Event {
 	private String eventEndDate;
 	private String datePosted; 
 	private Status status;
-	private User organizingUser;
+	private int organizingUser;
 	
 	private ArrayList<String> categoryList = new ArrayList<>();
 	
@@ -25,7 +25,7 @@ public class Event {
 
 	
 	public Event(Address address, EventType type, String name, String eventStartDate,
-				String eventEndDate, String datePosted, Status status, int i ){
+				String eventEndDate, String datePosted, Status status, int userId ){
 		
 		this.address = address;
 		this.type = type;
@@ -34,64 +34,66 @@ public class Event {
 		this.datePosted = datePosted;
 		this.eventStartDate = eventStartDate;
 		this.status = status;
+		this.organizingUser = userId;
 	
 		
 	}
 	
-	public Event( EventType type, String name, String eventStartDate,
-			String eventEndDate, String datePosted, Status status, int i ){
+	public Event( EventType eventType, String name, String eventStartDate,
+			String eventEndDate, String datePosted, Status status, int userId ){
 	
-
-	this.type = type;
-	this.name = name;
-	this.eventEndDate = eventEndDate;
-	this.datePosted = datePosted;
-	this.eventStartDate = eventStartDate;
-	this.status = status;
+		this.organizingUser = userId;
+		this.type = eventType;
+		this.name = name;
+		this.eventEndDate = eventEndDate;
+		this.datePosted = datePosted;
+		this.eventStartDate = eventStartDate;
+		this.status = status;
 	}
 	
 	public int getEventId() {
-		return eventId;
+		return this.eventId;
 	}
 
 
 	public Address getAddress() {
-		return address;
+		return this.address;
 	}
 
 
 	public EventType getType() {
-		return type;
+		return this.type;
 	}
 
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 
 	public String getEventStartDate() {
-		return eventStartDate;
+		return this.eventStartDate;
 	}
 
 
 	public String getEventEndDate() {
-		return eventEndDate;
+		return this.eventEndDate;
 	}
 
 
 	public String getDatePosted() {
-		return datePosted;
+		return this.datePosted;
 	}
 
 
 	public Status getStatus() {
-		return status;
+		return this.status;
 	}
 
 
-	public User getOrganizingUser() {
-		return organizingUser;
+	public int getOrganizingUser() {
+		System.out.println(this.organizingUser);
+		return this.organizingUser;
 	}
 
 

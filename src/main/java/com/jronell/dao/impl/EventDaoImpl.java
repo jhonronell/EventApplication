@@ -13,30 +13,37 @@ import com.jronell.model.EventType;
 
 public class EventDaoImpl implements EventDao {
 
-		
+	
 	@Override
 	public void addEvent(Event event) {
 		// TODO Auto-generated method stub
 		
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
 			   
-			myStatement.executeUpdate("INSERT INTO hopIn.events ( type, name, startDate, endDate, datePosted, status, organizing_user)"
-								 	 + "VALUES("
-								 	 + " '" + event.getType()  + "',"
-								 	 + " '" + event.getName()  + "',"
-								 	 + " '" + event.getEventStartDate()  + "',"
-								 	 + " '" + event.getEventEndDate()  + "',"
-								 	 + " '" + event.getDatePosted()  + "',"
-								 	 + " '" + event.getStatus()  + "'"
-								 	 + ", 0)");
+			String query = "INSERT INTO hopIn.events ( type, name, startDate, endDate, datePosted, status, organizing_user)"
+				 	 + "VALUES("
+				 	 + " '" + event.getType()  + "',"
+				 	 + " '" + event.getName()  + "',"
+				 	 + " '" + event.getEventStartDate()  + "',"
+				 	 + " '" + event.getEventEndDate()  + "',"
+				 	 + " '" + event.getDatePosted()  + "',"
+				 	 + " '" + event.getStatus()  + "'"
+				 	 + ",'" + event.getOrganizingUser()  + "')";
+			
+			System.out.println(query);
+			myStatement.executeUpdate(query);
 			
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			
+		
 		}
 				
 	}

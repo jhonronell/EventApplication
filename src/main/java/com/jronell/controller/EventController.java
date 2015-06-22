@@ -1,7 +1,5 @@
 package com.jronell.controller;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -50,12 +48,12 @@ public class EventController extends HttpServlet {
 		   	response.setContentType("text/html");
 		    User user1 = new User(15);
 		    
-		   	EventType eventType = 	 ConvertToEventType(request.getParameter("eventType"));
+		   	EventType eventType = EventType.validate(request.getParameter("eventType"));
 		   	String name = request.getParameter("name");
 		   	String eventDateStart = request.getParameter("eventDateStart");
 		   	String eventDateEnd = request.getParameter("eventDateEnd");
 		   	String eventDatePosted = request.getParameter("eventDatePosted");
-		   	Status eventStatus = ConvertToStatus( request.getParameter("status") );
+		   	Status eventStatus = Status.validate( request.getParameter("status") );
 		   	int organizer = user1.getUserId();
 		   	
 		   	
@@ -72,25 +70,9 @@ public class EventController extends HttpServlet {
 	         rd.forward(request, response);  
 	}
 
-	private Status ConvertToStatus(String status) {
-		
-		if(status.equals(Status.ACTIVE.toString()) ){
-			return (Status.ACTIVE);
-		}
-		return null;
-	
-	}
 
-	private EventType ConvertToEventType(String eventType) {
-		// TODO Auto-generated method stub
-		if(eventType.equals(EventType.DIY.toString()) ){
-			return EventType.DIY;
-		}
-		else if(eventType.equals(EventType.PAID.toString()) ){
-			return EventType.PAID;
-		}
-		return NONE;
-	}
+
+	
 
 
 }

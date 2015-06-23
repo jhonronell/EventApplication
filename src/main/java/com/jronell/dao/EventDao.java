@@ -1,6 +1,7 @@
 package com.jronell.dao;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import com.jronell.model.Event;
@@ -20,5 +21,7 @@ public interface EventDao {
 	public Event getEvent(String eventID);
 	
 	public Collection<Event> getEvents(EventType eventType);
+
+	public ArrayList<Event> getEvents();
 	
 }

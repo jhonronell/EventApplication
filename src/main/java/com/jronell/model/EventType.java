@@ -5,8 +5,13 @@ public enum EventType {
 	PAID,DIY,KKB;
 
 	
+
+	
+	
 	public static EventType validate(String eventType) {
 		// TODO Auto-generated method stub
+		
+				
 		if(eventType.equals(EventType.DIY.toString()) ){
 			return EventType.DIY;
 		}

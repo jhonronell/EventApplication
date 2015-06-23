@@ -25,4 +25,12 @@
     <servlet-name>eventServlet</servlet-name>
     <url-pattern>/event</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>eventList</servlet-name>
+    <servlet-class>com.jronell.controller.EventListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>eventList</servlet-name>
+    <url-pattern>/eventList</url-pattern>
+  </servlet-mapping>
 </web-app>

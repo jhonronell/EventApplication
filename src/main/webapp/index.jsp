@@ -10,7 +10,7 @@
 
 
 <a href="EventForm.jsp"> Manage Event </a>
-
+<a href="eventList"> Manage Event </a>
 
 
 <form action="user" method="post">  

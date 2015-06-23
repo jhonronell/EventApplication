@@ -4,12 +4,19 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.jronell.dao.EventDao;
 import com.jronell.jdbc.ConnectionManager;
 import com.jronell.model.Event;
+import com.jronell.model.EventList;
 import com.jronell.model.EventType;
+import com.jronell.model.Interest;
+import com.jronell.model.Status;
 
 public class EventDaoImpl implements EventDao {
 
@@ -64,6 +71,50 @@ public class EventDaoImpl implements EventDao {
 	public Event getEvent(String eventID) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ArrayList<Event> getEvents() {
+		
+		ArrayList<Event> eventList = new ArrayList<Event>();
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			ConnectionManager conManager = new ConnectionManager();
+			Connection conn = conManager.getConnection();
+			Statement myStatement = conn.createStatement();
+			
+			String sql = "SELECT address, type, name, startDate, endDate, "
+					   + "datePosted, status, organizing_user FROM hopIn.events;";
+
+		    ResultSet rs = myStatement.executeQuery(sql);
+		
+		    while(rs.next()){
+		    
+		     
+		         EventType type = EventType.validate(rs.getString("type")); 
+		         String name = rs.getString("name");  
+		         String eventStartDate = rs.getString("startDate");  
+		         String eventEndDate = rs.getString("endDate");  
+		         String datePosted = rs.getString("datePosted");
+		         Status status = Status.validate( rs.getString("status") ); 
+		         int organizing_user = rs.getInt("organizing_user");
+			 	 
+		         Event newEventRs = new Event(type, name, eventStartDate, eventEndDate, datePosted, status, organizing_user);
+		         eventList.add(newEventRs);
+		         
+		    }
+		    rs.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	
+		return eventList;
 	}
 
 	@Override

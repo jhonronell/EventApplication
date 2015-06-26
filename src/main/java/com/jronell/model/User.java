@@ -24,7 +24,7 @@ public class User {
 	private String username; 
 	private String password;
 	
-	private Address address;
+	private EventAddress address;
 	private ContactInformation contactInformation;
 	private Status status;
 	private UserType userType;
@@ -61,7 +61,7 @@ public class User {
 		
 		
 	}
-	public void setAddress(Address address){
+	public void setAddress(EventAddress address){
 		this.address = address;
 	}
 	public void setcontactInformation(ContactInformation contactInformation){

@@ -7,7 +7,7 @@ import java.sql.*;
 import org.junit.Test;
 
 import com.jronell.jdbc.ConnectionManager;
-import com.jronell.model.Address;
+import com.jronell.model.EventAddress;
 import com.jronell.model.ContactInformation;
 import com.jronell.model.Interest;
 import com.jronell.model.InterestList;
@@ -20,8 +20,10 @@ import com.jronell.model.User.UserType;
 public class TestCase {
 
 	private static final String NONE = null;
-	@Test
+
 	
+	
+	@Test
 	public void testDatabaseConnection() throws ClassNotFoundException, SQLException{
 		
 		ConnectionManager conManager = new ConnectionManager();	
@@ -69,7 +71,7 @@ public class TestCase {
 		
 		User user1 = new User(1);
 		
-		Address address = new Address("San Lorenzo","Kapitolyo","Pasig","boystown","NCR","Manila","PH");
+		EventAddress address = new EventAddress("San Lorenzo","Kapitolyo","Pasig","boystown","NCR","Manila","PH", null);
 		ContactInformation conInfo = new ContactInformation("jhonronell@gmail.com", "09176234028", NONE, NONE);
 		
 		InterestList newInterestList = new InterestList(); 

@@ -9,7 +9,7 @@ public class Event {
 	
 	
 	private int eventId;
-	public Address address;
+	public EventAddress address;
 	private EventType type;
 	private String name;
 	
@@ -23,8 +23,12 @@ public class Event {
 	
 	private Set<User> participants  = new HashSet<>();
 
+	public void setAddress(EventAddress address){
+		
+		this.address = address;
+	}
 	
-	public Event(Address address, EventType type, String name, String eventStartDate,
+	public Event(EventAddress address, EventType type, String name, String eventStartDate,
 				String eventEndDate, String datePosted, Status status, int userId ){
 		
 		this.address = address;
@@ -39,6 +43,9 @@ public class Event {
 		
 	}
 	
+	public int getEventId() {
+		return this.eventId;
+	}
 	public Event( EventType eventType, String name, String eventStartDate,
 			String eventEndDate, String datePosted, Status status, int userId ){
 	
@@ -50,17 +57,13 @@ public class Event {
 		this.eventStartDate = eventStartDate;
 		this.status = status;
 	}
-	
-	public int getEventId() {
-		return this.eventId;
+
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
 	}
-
-
-	public Address getAddress() {
+	public EventAddress getAddress() {
 		return this.address;
 	}
-
-
 	public EventType getType() {
 		return this.type;
 	}

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jronell.dao.impl.EventDaoImpl;
+import com.jronell.model.EventAddress;
 import com.jronell.model.Event;
 import com.jronell.model.EventType;
 import com.jronell.model.Status;
@@ -54,16 +55,21 @@ public class EventController extends HttpServlet {
 		   	String eventDateEnd = request.getParameter("eventDateEnd");
 		   	String eventDatePosted = request.getParameter("eventDatePosted");
 		   	Status eventStatus = Status.validate( request.getParameter("status") );
+		   
 		   	int organizer = user1.getUserId();
-		   	
-		   	
-		   	System.out.println( eventType + name + eventDateStart + eventDateEnd +  eventDatePosted +  eventStatus + organizer);
-		   	
 		   	Event event1 = new Event( eventType , name , eventDateStart ,eventDateEnd, eventDatePosted,  eventStatus , organizer );
-		
+		   	
+		    EventAddress address = new EventAddress("San Lorenzo","Kapitolyo","Pasig","boystown","NCR","Manila","PH", null);
 			
-			EventDaoImpl eventDao = new EventDaoImpl();
-			eventDao.addEvent( event1  );
+		    event1.setAddress(address);
+		    
+		   	EventDaoImpl eventDao = new EventDaoImpl();
+		  
+		   	eventDao.addEvent( event1 );
+		    
+			//eventDao.addEvent( event1 );
+			System.out.println("----->" + address.getUser_id()  );
+			
 			request.setAttribute("event1",event1);  
 
 	         RequestDispatcher rd=request.getRequestDispatcher("display.jsp");  

@@ -13,13 +13,17 @@
 <% 
    request.getAttribute("eventList");  
 %>
-
- <c:forEach var="event" items="${eventList}">
-                <tr>
-                    <td><c:out value="${event.type}" /></td>
-            
-                </tr>
-</c:forEach>
-            
+	<table>
+		<c:forEach var="event" items="${eventList}">
+			<tr>
+				<td><c:out value="${event.type}" /></td>
+				<td><c:out value="${event.name}" /></td>
+				<td><c:out value="${event.eventStartDate}" /></td>
+				<td><c:out value="${event.eventEndDate}" /></td>
+				<td><c:out value="${event.eventStartDate}" /></td>
+				<td><c:out value="${event.status}" /></td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

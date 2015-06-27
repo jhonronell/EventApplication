@@ -16,7 +16,6 @@ public class InterestList {
 	}
 	
 	public void addInterest(Interest interest){
-	
 	   if(!exist(interest)){ 		
 		interestList.add(interest);
        }
@@ -77,11 +76,6 @@ public class InterestList {
 		return new ArrayList<Interest>(interestList);
 		
 	}
-	
-	
-	
-
-	
 	
 	public int getInterestSize()
 	{

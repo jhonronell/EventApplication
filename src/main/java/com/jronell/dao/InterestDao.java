@@ -1,5 +1,6 @@
 package com.jronell.dao;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import com.jronell.model.Interest;
@@ -13,9 +14,8 @@ public interface InterestDao {
 	
 	public void deleteInterest(Interest interest);
 	
-	public Collection<Interest> getUserInterestList(User user);
+	public ArrayList<Interest> getUserInterestList(User user);
 	
-	public Collection<Interest> getInterestList();
-	
+	public ArrayList<Interest> getInterestList();
 	
 }

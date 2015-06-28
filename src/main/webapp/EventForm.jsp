@@ -42,6 +42,8 @@
   <p>&nbsp;</p>
   <button type="submit"> Submit </button>
 </form>
+
+
 <script>
 	$( ".datepicker" ).datepicker();
 </script>

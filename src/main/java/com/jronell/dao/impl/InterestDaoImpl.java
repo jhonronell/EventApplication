@@ -11,7 +11,7 @@ import com.jronell.jdbc.ConnectionManager;
 import com.jronell.model.Interest;
 import com.jronell.model.User;
 
-public class InterestDaoImp implements InterestDao {
+public class InterestDaoImpl implements InterestDao {
 
 	@Override
 	public void addInterest(Interest interest) {
@@ -21,46 +21,18 @@ public class InterestDaoImp implements InterestDao {
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
-			ResultSet rs = null;
-			   
-			String query = "INSERT INTO hopIn.Events ( type, name, startDate, endDate, datePosted, status, organizing_user,id)"
-				 	 + "VALUES("
-				 	 + " '" + event.getType()  + "',"
-				 	 + " '" + event.getName()  + "',"
-				 	 + " '" + event.getEventStartDate()  + "',"
-				 	 + " '" + event.getEventEndDate()  + "',"
-				 	 + " '" + event.getDatePosted()  + "',"
-				 	 + " '" + event.getStatus()  + "'"
-				 	 + ",'" + event.getOrganizingUser()  + "',0)";
+		
+			String query = "INSERT INTO hopIn.Interest (id, name, userId, interestTypeId) "
+					 	 + "	VALUES(0, '" + interest.getName() + "', '"+ interest.getUserId() + "', '"+ interest.getInterestTypeId() + "'); ";
 			
-			System.out.println(query);
-			
-			myStatement.executeUpdate(query,   Statement.RETURN_GENERATED_KEYS);
-		    
-		    int autoIncKeyFromApi = -1;
-
-		    rs = myStatement.getGeneratedKeys();
-
-		    if (rs.next()) {
-		        autoIncKeyFromApi = rs.getInt(1);
-		    } else {
-
-		        // throw an exception from here
-		    }
-		    
-		    event.setEventId( autoIncKeyFromApi );
-			
-			AddressDaoImpl addressDao = new AddressDaoImpl();
-			//not sure if this is code smell
-			event.address.setEventId(autoIncKeyFromApi);
-			addressDao.addEventAddress(  event.getAddress() );
+			myStatement.executeUpdate(query);
+	
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			
-		
 		}
 	}
 

@@ -16,7 +16,7 @@ public class EventDaoTest {
 	public void InsertDataToDB() {
 		
 		//Address address = new Address("San Lorenzo","Kapitolyo","Pasig","boystown","NCR","Manila","PH");
-		User user1 = new User(1);
+		User user1 = new User();
 		
 		assertEquals(user1.getUserId(),1);
 		Event event1 = new Event( EventType.DIY , "2002-10-09", "2002-10-09", "2002-10-09", "2002-10-09", Status.ACTIVE , user1.getUserId() );

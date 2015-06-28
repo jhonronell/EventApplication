@@ -1,9 +1,6 @@
 package com.jronell.model;
 
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 
 
@@ -14,12 +11,20 @@ public class User {
 	public enum Gender { MALE, FEMALE } 
 	
 	private String firstName;
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
 	private String lastName;
 	private String middleName;
 	private Gender gender;
 	private Date dateOfBirth;
 	private int age;
-	private final int id;
+	private  int id;
 	
 	private String username; 
 	private String password;
@@ -32,40 +37,40 @@ public class User {
 	private EventList events;
 	
 	
-	public User(int id){
-		this.id = id;
-	}
 	
 	public int getUserId(){
-
-  	return this.id;
-		
+		return this.id;
 	}
 	public void addUserPersonalInformation(int id, String firstName, String lastName, String middleName, Gender gender,
 			Date dateOfBirth, int age)
 	{
 		this.firstName  = firstName;
 		this.lastName = lastName;
-		this.middleName = middleName;
-		this.gender = gender;
-		this.dateOfBirth = dateOfBirth;
-		this.age = age;
+		this.setMiddleName(middleName);
+		this.setGender(gender);
+		this.setDateOfBirth(dateOfBirth);
+		this.setAge(age);
 		
 	}
+	public StringBuilder displayUserInfo(){
+	
+		StringBuilder userInfo = new StringBuilder();
+		userInfo.append(this.firstName + " " + this.lastName +  "Is registered " +
+		                this.username + "with " + this.password + "Password" );
+		return userInfo;
+	}
+
 	public void setCredentials(String username,String password, UserType usertype, Status status){
-		
 		this.username = username;
 		this.password = password;
-		this.userType = usertype;
-		this.status = status;
-		
-		
+		this.setUserType(usertype);
+		this.status = status;		
 	}
 	public void setAddress(EventAddress address){
 		this.address = address;
 	}
 	public void setcontactInformation(ContactInformation contactInformation){
-		this.contactInformation = contactInformation;
+		this.setContactInformation(contactInformation);
 	}
 
 	public void setInterest(InterestList newInterestList) {
@@ -73,39 +78,114 @@ public class User {
 		this.interest = newInterestList;
 	}
 
+	public void setEvents(EventList events) {
+		this.events = events;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
+	public void setContactInformation(ContactInformation contactInformation) {
+		this.contactInformation = contactInformation;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public EventList getEvents() {
 		return events;
 	}
 
-	public void setEvents(EventList events) {
-		this.events = events;
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void getInterestList() {
+		// TODO Auto-generated method stub
+		 for(Interest i:  interest.getInterestList()){
+			 System.out.println(i.getName());
+		 }
+	}
+
+	public String getUsername()
+	{	
+		return this.username;
+	}
+
+	public ContactInformation getContactInformation() {
+		return contactInformation;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public int getAge() {
+		return age;
 	}
 
 	public Status getStatus() {
 		// TODO Auto-generated method stub
 		return this.status;
 	}
-		
-	public StringBuilder displayUserInfo(){
-	
-		StringBuilder userInfo = new StringBuilder();
-		
-		userInfo.append(this.firstName + " " + this.lastName +  "Is registered " +
-		                this.username + "with " + this.password + "Password" );
-		              
-		
-		return userInfo;
+
+	public String getLastName() {
+		return lastName;
 	}
-	public String getUsername()
-	{	
-		return this.username;
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	
-	public void getInterestList() {
-		// TODO Auto-generated method stub
-		 for(Interest i:  interest.getInterestList()){
-			 System.out.println(i.getInterestName());
-		 }
+
+	public String getPassword() {
+		return password;
 	}
-	
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public EventAddress getAddress() {
+		return address;
+	}
+
+	public InterestList getInterest() {
+		return interest;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+
 }

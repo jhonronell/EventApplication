@@ -1,22 +1,46 @@
 package com.jronell.model;
 
 public class Interest {
-
-	private final String interestName;
-	private int interestId;
-		
-	public Interest(String interest) {
-		// TODO Auto-generated constructor stub
-		this.interestName = interest;
-		
+	
+	private  String name;
+	private int interestTypeId;
+	private int userId;
+	private String status;
+	
+	public Interest(String name){
+		this.name = name;
 	}
-	public String getInterestName(){
-		
-		return this.interestName;
+	
+	public String getName() {
+		return name;
 	}
-
-	public int getInterestId() {
-		return interestId;
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public int getInterestTypeId() {
+		return interestTypeId;
+	}
+	
+	public void setInterestTypeId(int interestTypeId) {
+		this.interestTypeId = interestTypeId;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+	
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

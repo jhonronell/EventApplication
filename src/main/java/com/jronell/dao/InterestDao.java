@@ -18,4 +18,5 @@ public interface InterestDao {
 	
 	public ArrayList<Interest> getInterestList();
 	
+	
 }

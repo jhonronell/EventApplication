@@ -26,7 +26,7 @@ public class InterestList {
 	
 	public boolean exist(Interest interest){
 	   for(Interest currentInterest : interestList ){
-		 if(currentInterest.getInterestName().equals(interest.getInterestName())  ){
+		 if(currentInterest.getName().equals(interest.getName())  ){
 			return true; 
 		 }
 	   }

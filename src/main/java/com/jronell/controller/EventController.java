@@ -47,7 +47,7 @@ public class EventController extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		   	response.setContentType("text/html");
-		    User user1 = new User(15);
+		    User user1 = new User();
 		    
 		   	EventType eventType = EventType.validate(request.getParameter("eventType"));
 		   	String name = request.getParameter("name");

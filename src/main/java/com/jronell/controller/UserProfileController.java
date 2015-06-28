@@ -1,6 +1,7 @@
 package com.jronell.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,22 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jronell.dao.InterestType;
-import com.jronell.dao.impl.InterestTypeDaoImpl;
+import com.jronell.dao.impl.EventDaoImpl;
 import com.jronell.dao.impl.UserDaoImpl;
+import com.jronell.model.Event;
 import com.jronell.model.User;
 
 /**
- * Servlet implementation class UserController
+ * Servlet implementation class UserProfileController
  */
-@WebServlet("/UserController")
-public class UserController extends HttpServlet {
+@WebServlet("/UserProfileController")
+public class UserProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserController() {
+    public UserProfileController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,36 +36,19 @@ public class UserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
-		
-		
+		UserDaoImpl userProfileImpl = new UserDaoImpl();
+		User user = userProfileImpl.getUser(  Integer.valueOf(request.getParameter("userId"))  );
+	
+  		response.setContentType("text/html");
+		request.setAttribute("userprofile", user );
+		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  
+		requestDispatcher.forward(request, response);  
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	response.setContentType("text/html");
-	  	
-
-	 	String firstName = request.getParameter("firstName");
-	 	String lastName = request.getParameter("lastName");
-		String middleName = request.getParameter("middleName");
-	   	System.out.println("controller:" + lastName);
-	 	User newUser = new User();
-		
-	 	newUser.setFirstName(firstName);
-	 	newUser.setMiddleName(middleName);
-	 	newUser.setLastName(lastName);
-	 	
-	 	UserDaoImpl userDaoImpl = new UserDaoImpl();
-	 	userDaoImpl.addUser(newUser);
-	 	  
-	 	request.setAttribute("userprofile",newUser);  
-
-        RequestDispatcher rd = request.getRequestDispatcher("user.jsp");  
-        rd.forward(request, response);  
 	}
 
 }

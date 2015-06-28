@@ -6,10 +6,12 @@ public interface UserDao {
 
 	public void addUser();
 	
-	public void getUser();
+	public User getUser(int userId);
 
 	void addUser(User user);
-	
+
+
+
 	
 	
 	

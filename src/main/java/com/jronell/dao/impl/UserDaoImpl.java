@@ -7,6 +7,9 @@ import java.sql.Statement;
 
 import com.jronell.dao.UserDao;
 import com.jronell.jdbc.ConnectionManager;
+import com.jronell.model.Event;
+import com.jronell.model.EventType;
+import com.jronell.model.Status;
 import com.jronell.model.User;
 
 public class UserDaoImpl implements UserDao {
@@ -65,9 +68,40 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void getUser() {
+	public User getUser(int userId) {
 		// TODO Auto-generated method stub
+		User user = new User();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			ConnectionManager conManager = new ConnectionManager();
+			Connection conn = conManager.getConnection();
+			Statement myStatement = conn.createStatement();
+			
+			String sql = "SELECT * FROM hopIn.User where id='" + userId  + "';";
 
+		    ResultSet rs = myStatement.executeQuery(sql);
+		    System.out.println(sql);
+		    while(rs.next()){
+		    	
+		    	 String firstName = rs.getString("firstName");  
+		         String lastName = rs.getString("lastName");  
+		         String middleName = rs.getString("middleName");
+		         
+		       
+		         user.setFirstName(firstName);
+		         user.setLastName(lastName);
+		         user.setMiddleName(middleName);
+		    }
+		    rs.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	
 	}
 
 	@Override

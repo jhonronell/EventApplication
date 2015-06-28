@@ -10,9 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
-   request.getAttribute("eventList");  
-%>
+	<% 
+   		request.getAttribute("eventList");  
+	%>
 	<table>
 		<c:forEach var="event" items="${eventList}">
 			<tr>

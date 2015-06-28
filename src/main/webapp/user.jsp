@@ -20,13 +20,10 @@
      <label>Middle Name  </label> <input type="text" name="middleName" class="middleName"  id="name" />
   </p>
    <p>
-     <label>Last Name  </label> <input type="text" name="LastName" class="LastName"  id="name" />
+     <label>Last Name  </label> <input type="text" name="lastName" class="lastName"  id="lastname" />
   </p>
   
-  
-  <button type="submit"> Submit </button>
-
-
+ <button type="submit"> Submit </button>
 </form>
 </body>
 </html>

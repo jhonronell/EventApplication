@@ -69,7 +69,7 @@ public class TestCase {
 	public void createAndAddInterestAddressToUser() {
 		// TODO Auto-generated constructor stub
 		
-		User user1 = new User(1);
+		User user1 = new User();
 		
 		EventAddress address = new EventAddress("San Lorenzo","Kapitolyo","Pasig","boystown","NCR","Manila","PH", null);
 		ContactInformation conInfo = new ContactInformation("jhonronell@gmail.com", "09176234028", NONE, NONE);

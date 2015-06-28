@@ -59,7 +59,7 @@ public class UserController extends HttpServlet {
 	 	  
 	 	request.setAttribute("user",newUser);  
 
-        RequestDispatcher rd = request.getRequestDispatcher("interestType.jsp");  
+        RequestDispatcher rd = request.getRequestDispatcher("user.jsp");  
         rd.forward(request, response);  
 	}
 

@@ -11,6 +11,7 @@ import com.jronell.dao.EventDao;
 import com.jronell.jdbc.ConnectionManager;
 import com.jronell.model.EventAddress;
 import com.jronell.model.Event;
+import com.jronell.model.EventList;
 import com.jronell.model.EventType;
 import com.jronell.model.Status;
 
@@ -77,22 +78,11 @@ public class EventDaoImpl implements EventDao {
 
 	}
 
-	@Override
-	public void deleteEvent(String eventId) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
-	public Event getEvent(String eventID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Event> getEvents() {
+	public EventList getEvents(int userId) {
 		
-		ArrayList<Event> eventList = new ArrayList<Event>();
+		EventList eventList = null;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -118,7 +108,8 @@ public class EventDaoImpl implements EventDao {
 		         int organizing_user = rs.getInt("organizing_user");
 			 	 
 		         Event newEventRs = new Event(type, name, eventStartDate, eventEndDate, datePosted, status, organizing_user);
-		         eventList.add(newEventRs);
+		         
+		         eventList.addEvent(newEventRs);
 		         
 		    }
 		    rs.close();
@@ -172,6 +163,24 @@ public class EventDaoImpl implements EventDao {
 			
 		
 		}
+	}
+
+	@Override
+	public void deleteEvent(int eventId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Event getEvent(int eventID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EventList getEvents() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

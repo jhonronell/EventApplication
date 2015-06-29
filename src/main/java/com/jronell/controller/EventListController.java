@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jronell.dao.impl.EventDaoImpl;
 import com.jronell.model.Event;
+import com.jronell.model.EventList;
 
 /**
  * Servlet implementation class eventListController
@@ -35,11 +36,11 @@ public class EventListController extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 			EventDaoImpl eventDao = new EventDaoImpl();
-			ArrayList<Event> eventList = eventDao.getEvents();
-		
-	  		response.setContentType("text/html");
+			EventList eventList = eventDao.getEvents();
+			
+			response.setContentType("text/html");
 			request.setAttribute("eventList", eventList );
-			RequestDispatcher requestDispatcher=request.getRequestDispatcher("EventList.jsp");  
+			RequestDispatcher requestDispatcher=request.getRequestDispatcher("eventList.jsp");  
 			requestDispatcher.forward(request, response);  
 	}
 

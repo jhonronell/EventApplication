@@ -37,9 +37,12 @@ public class UserProfileController extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		UserDaoImpl userProfileImpl = new UserDaoImpl();
+		EventDaoImpl eventList = new EventDaoImpl();
+		
 		User user = userProfileImpl.getUser(  Integer.valueOf(request.getParameter("userId"))  );
-	
-  		response.setContentType("text/html");
+		user.setEventList(  eventList.getEvents( user.getId() ) );
+		
+		response.setContentType("text/html");
 		request.setAttribute("userprofile", user );
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  
 		requestDispatcher.forward(request, response);  

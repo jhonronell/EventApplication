@@ -2,12 +2,12 @@
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@  page import="com.jronell.model.EventType" %>
 <%@  page import="com.jronell.model.Status" %>
-<jsp:include page="include/header.html" />
+<jsp:include page="include/header.jsp" />
 
 <%  pageContext.setAttribute("EventType", EventType.values()); %>
 <%  pageContext.setAttribute("Status", Status.values()); %>
 
-<form id="form1" name="form1" method="post" action="event">
+<form id="form1" name="form1" method="post"  class="pure-form" action="event">
   <p>&nbsp;</p>
   <p>
   
@@ -40,7 +40,8 @@
     <label>Date Posted </label>   <input type="text" name="eventDatePosted" class="datepicker"  id="eventDatePosted" />
   </p>
   <p>&nbsp;</p>
-  <button type="submit"> Submit </button>
+ <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+  
 </form>
 
 

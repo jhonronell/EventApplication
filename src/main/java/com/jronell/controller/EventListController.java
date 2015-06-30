@@ -3,6 +3,7 @@ package com.jronell.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,13 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jronell.dao.impl.EventDaoImpl;
+import com.jronell.dao.impl.UserDaoImpl;
 import com.jronell.model.Event;
 import com.jronell.model.EventList;
+import com.jronell.model.User;
 
 /**
- * Servlet implementation class eventListController
+ * Servlet implementation class EventListController
  */
-@WebServlet("/eventListController")
+@WebServlet("/EventListController")
 public class EventListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,13 +36,11 @@ public class EventListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-			EventDaoImpl eventDao = new EventDaoImpl();
-			EventList eventList = eventDao.getEvents();
-			
+	
 			response.setContentType("text/html");
-			request.setAttribute("eventList", eventList );
+			EventDaoImpl eventDao = new EventDaoImpl();
+			EventList eventList = eventDao.getEvents(); 
+			request.setAttribute("eventListResult", eventList.getEventList() );
 			RequestDispatcher requestDispatcher=request.getRequestDispatcher("eventList.jsp");  
 			requestDispatcher.forward(request, response);  
 	}

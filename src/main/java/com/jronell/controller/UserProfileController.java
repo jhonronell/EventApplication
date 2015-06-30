@@ -43,7 +43,8 @@ public class UserProfileController extends HttpServlet {
 		user.setEventList(  eventList.getEvents( user.getId() ) );
 		
 		response.setContentType("text/html");
-		request.setAttribute("userprofile", user );
+		request.setAttribute("userprofile", user);
+		request.setAttribute("userEvents", user.getEvents());
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  
 		requestDispatcher.forward(request, response);  
 	}

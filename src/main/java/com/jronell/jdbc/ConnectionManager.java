@@ -8,7 +8,7 @@ public class ConnectionManager {
 	private Object userName = "root";
 	private Object password = "root";
 	private String dbms = "mysql";
-	private String serverName = "192.168.56.101";
+	private String serverName = "192.168.56.102";
 	private String dbName = "hopIn";
 
 	public Connection getConnection() throws SQLException, ClassNotFoundException {

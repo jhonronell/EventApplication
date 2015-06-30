@@ -1,16 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<jsp:include page="include/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@  page import="com.jronell.dao.impl.UserDaoImpl"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
 	<%
 		request.getAttribute("userprofile");
+		request.getAttribute("userEvents");
 	%>
 	<script>
 		$(function() {
@@ -18,7 +10,34 @@
 		});
 	</script>
 
+ <style scoped>
 
+        .button-success,
+        .button-error,
+        .button-warning,
+        .button-secondary {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-success {
+            background: rgb(28, 184, 65); /* this is a green */
+        }
+
+        .button-error {
+            background: rgb(202, 60, 60); /* this is a maroon */
+        }
+
+        .button-warning {
+            background: rgb(223, 117, 20); /* this is an orange */
+        }
+
+        .button-secondary {
+            background: rgb(233,92,85); /* this is a light blue */
+        }
+
+    </style>
 
 	<div id="tabs">
 		<ul>
@@ -33,6 +52,8 @@
 					<li>${userprofile.lastName}</li>
 					<li>${userprofile.middleName}</li>
 				</ul>
+			    <button class="button-secondary pure-button">Secondary Button</button>
+				<button class="pure-button button-secondary">Secondary Button</button>
 			</div>
 		</div>
 		<div id="tabs-2">
@@ -49,24 +70,20 @@
 				consectetur tortor et purus.</p>
 		</div>
 		<div id="tabs-3">
-			<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse
-				potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque
-				rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante.
-				Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-				per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim
-				commodo pellentesque. Praesent eu risus hendrerit ligula tempus
-				pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a,
-				lacus.</p>
-			<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at,
-				semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra
-				justo vitae neque. Praesent blandit adipiscing velit. Suspendisse
-				potenti. Donec mattis, pede vel pharetra blandit, magna ligula
-				faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque.
-				Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi
-				lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean
-				vehicula velit eu tellus interdum rutrum. Maecenas commodo.
-				Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus
-				hendrerit hendrerit.</p>
+			
+		
+				<table class="pure-table pure-table-horizontal">
+					<c:forEach var="event" items="${userEvents}">
+						<tr>
+							<td><c:out value="${event.type}" /></td>
+							<td><c:out value="${event.name}" /></td>
+							<td><c:out value="${event.eventStartDate}" /></td>
+							<td><c:out value="${event.eventEndDate}" /></td>
+							<td><c:out value="${event.eventStartDate}" /></td>
+							<td><c:out value="${event.status}" /></td>
+						</tr>
+					</c:forEach>
+				</table>
 		</div>
 	</div>
 

@@ -9,7 +9,7 @@ import javax.management.RuntimeErrorException;
 
 public class InterestList {
 	
-	private Set<Interest> interestList = new HashSet<Interest>();
+	private ArrayList<Interest> interestList = new ArrayList<Interest>();
 	
 	public InterestList() {
 		// TODO Auto-generated constructor stub

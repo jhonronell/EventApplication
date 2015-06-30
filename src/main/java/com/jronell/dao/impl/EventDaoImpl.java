@@ -82,7 +82,7 @@ public class EventDaoImpl implements EventDao {
 	@Override
 	public EventList getEvents(int userId) {
 		
-		EventList eventList = null;
+		EventList eventList = new EventList();
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -140,7 +140,7 @@ public class EventDaoImpl implements EventDao {
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
 			   
-			String query = "INSERT INTO hopIn.events ( type, name, startDate, endDate, datePosted, status, organizing_user)"
+			String query = "INSERT INTO hopIn.Events ( type, name, startDate, endDate, datePosted, status, organizing_user)"
 				 	 + "VALUES("
 				 	 + " '" + event.getType()  + "',"
 				 	 + " '" + event.getName()  + "',"
@@ -179,8 +179,49 @@ public class EventDaoImpl implements EventDao {
 
 	@Override
 	public EventList getEvents() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		EventList eventList = new EventList();
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			ConnectionManager conManager = new ConnectionManager();
+			Connection conn = conManager.getConnection();
+			Statement myStatement = conn.createStatement();
+			
+			String sql = "SELECT * FROM hopIn.Events;";
+
+		    ResultSet rs = myStatement.executeQuery(sql);
+		    System.out.println(sql);
+		    while(rs.next()){
+		    	
+		    	System.out.println(rs.getString("type"));
+		    	
+		     
+		         EventType type = EventType.validate(rs.getString("type")); 
+		         String name = rs.getString("name");  
+		         String eventStartDate = rs.getString("startDate");  
+		         String eventEndDate = rs.getString("endDate");  
+		         String datePosted = rs.getString("datePosted");
+		         Status status = Status.validate( rs.getString("status") ); 
+		         int organizing_user = rs.getInt("organizing_user");
+			 	 
+		         Event newEventRs = new Event(type, name, eventStartDate, eventEndDate, datePosted, status, organizing_user);
+		         
+		         eventList.addEvent(newEventRs);
+		         
+		    }
+		    rs.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+		
+   	return eventList;
 	}
 
 }

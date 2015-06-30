@@ -3,12 +3,9 @@ package com.jronell.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-
-
 public class User {
 
 	public enum UserType{ CLIENT, ADMIN };
-	
 	public enum Gender { MALE, FEMALE } 
 	
 	private String firstName;
@@ -112,8 +109,8 @@ public class User {
 		this.age = age;
 	}
 
-	public EventList getEvents() {
-		return eventList;
+	public ArrayList<Event> getEvents() {
+		return  new ArrayList<Event>(this.eventList.getEventList());
 	}
 
 	public UserType getUserType() {
@@ -192,6 +189,5 @@ public class User {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-
 
 }

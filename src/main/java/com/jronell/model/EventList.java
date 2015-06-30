@@ -9,14 +9,12 @@ public class EventList {
 	public void addEvent(Event event){
 		eventList.add(event);
 	}
+	
 	public void removeEvent(Event event){
 		eventList.remove(event);
 	}
-	public ArrayList<Event> getEventList(){
-		
-		return this.eventList;
-	
-	}
-	
 
+	public ArrayList<Event> getEventList(){
+		return this.eventList;
+	}
 }

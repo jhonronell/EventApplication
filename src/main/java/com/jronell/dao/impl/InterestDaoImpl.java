@@ -83,9 +83,9 @@ public class InterestDaoImpl implements InterestDao {
 		         String eventStartDate = rs.getString("startDate");  
 		         String eventEndDate = rs.getString("endDate");  
 		         
-		         Interest interst = new Interest();
+		       //  Interest interst = new Interest();
 		         
-		         interest.addInterest(interest);
+		         //interest.addInterest(interest);
 		         
 		    }
 		    rs.close();
@@ -99,7 +99,7 @@ public class InterestDaoImpl implements InterestDao {
 	
 		
 		
-		return eventList;
+		return null;
 		
 		
 	}

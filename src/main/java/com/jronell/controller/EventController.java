@@ -15,6 +15,7 @@ import com.jronell.model.Event;
 import com.jronell.model.EventType;
 import com.jronell.model.Status;
 import com.jronell.model.User;
+import com.jronell.serviceImpl.EventServiceImpl;
 
 /**
  * Servlet implementation class EventController
@@ -46,9 +47,6 @@ public class EventController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		   	response.setContentType("text/html");
-		    User user1 = new User();
-		    
 		   	EventType eventType = EventType.validate(request.getParameter("eventType"));
 		   	String name = request.getParameter("name");
 		   	String eventDateStart = request.getParameter("eventDateStart");
@@ -56,24 +54,16 @@ public class EventController extends HttpServlet {
 		   	String eventDatePosted = request.getParameter("eventDatePosted");
 		   	Status eventStatus = Status.validate( request.getParameter("status") );
 		   
-		   	int organizer = user1.getUserId();
-		   	Event event1 = new Event( eventType , name , eventDateStart ,eventDateEnd, eventDatePosted,  eventStatus , organizer );
-		   	
-		    EventAddress address = new EventAddress("San Lorenzo","Kapitolyo","Pasig","boystown","NCR","Manila","PH", null);
-			
-		    event1.setAddress(address);
 		    
-		   	EventDaoImpl eventDao = new EventDaoImpl();
-		  
-		   	eventDao.addEvent( event1 );
+		   	Event event = new Event( eventType , name , eventDateStart ,eventDateEnd, eventDatePosted,  eventStatus );
+		   			   			  
+		    EventServiceImpl eventService = new EventServiceImpl();		    
+		    eventService.addEvent(event);
 		    
-			//eventDao.addEvent( event1 );
-			System.out.println("----->" + address.getUser_id()  );
-			
-			request.setAttribute("event1",event1);  
+			request.setAttribute("event1",event);  
 
-	         RequestDispatcher rd=request.getRequestDispatcher("display.jsp");  
-	         rd.forward(request, response);  
+	        RequestDispatcher rd=request.getRequestDispatcher("display.jsp");  
+	        rd.forward(request, response);  
 	}
 
 

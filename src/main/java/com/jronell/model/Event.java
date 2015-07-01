@@ -7,7 +7,6 @@ import java.util.Set;
 
 public class Event {
 	
-	
 	private int eventId;
 	public EventAddress address;
 	private EventType type;
@@ -19,17 +18,20 @@ public class Event {
 	private Status status;
 	private int organizingUser;
 	
-	private ArrayList<String> categoryList = new ArrayList<>();
 	
-	private Set<User> participants  = new HashSet<>();
+	private ArrayList<User> participants  = new ArrayList<User>();
 
+	public void setOrganizingUser(int organizerId){
+		this.organizingUser = organizerId;
+	}
+	
 	public void setAddress(EventAddress address){
 		
 		this.address = address;
 	}
 	
 	public Event(EventAddress address, EventType type, String name, String eventStartDate,
-				String eventEndDate, String datePosted, Status status, int userId ){
+				String eventEndDate, String datePosted, Status status ){
 		
 		this.address = address;
 		this.type = type;
@@ -38,7 +40,7 @@ public class Event {
 		this.datePosted = datePosted;
 		this.eventStartDate = eventStartDate;
 		this.status = status;
-		this.organizingUser = userId;
+		
 	
 		
 	}
@@ -47,15 +49,22 @@ public class Event {
 		return this.eventId;
 	}
 	public Event( EventType eventType, String name, String eventStartDate,
-			String eventEndDate, String datePosted, Status status, int userId ){
+			String eventEndDate, String datePosted, Status status ){
 	
-		this.organizingUser = userId;
+		
 		this.type = eventType;
 		this.name = name;
 		this.eventEndDate = eventEndDate;
 		this.datePosted = datePosted;
 		this.eventStartDate = eventStartDate;
 		this.status = status;
+	}
+	public Event( EventType eventType, String name, String eventStartDate,
+			String eventEndDate, String datePosted, Status status,int organizerId ){
+	
+		super();
+		this.organizingUser = organizerId;
+		
 	}
 
 	public void setEventId(int eventId) {
@@ -100,14 +109,8 @@ public class Event {
 	}
 
 
-	public ArrayList<String> getCategoryList() {
-		return categoryList;
-	}
 
 
-	public Set<User> getParticipants() {
-		return participants;
-	}
 
 
 	public void enlistParticipant(User user){

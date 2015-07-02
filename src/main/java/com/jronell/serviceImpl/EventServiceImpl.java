@@ -38,28 +38,36 @@ public class EventServiceImpl implements EventService {
 
 	}
 
-	@Override
-	public void getUserEvents(int userId) {
-		// TODO Auto-generated method stub
 
+
+	@Override
+	public void getUserEventByUserId(int userId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void getInterestEvents(int interestId) {
+	public void getUserEventByOrganizerid(int organizerId) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void getEventDates(int interestId) {
+	public void getEventsByInterest(int interestId) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void executeEventQuery() {
+	public void getEventByDate(String date) {
 		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void getEventByDateRange(String dateFrom, String dateTo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

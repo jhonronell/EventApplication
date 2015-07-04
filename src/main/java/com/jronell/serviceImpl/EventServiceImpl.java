@@ -1,5 +1,6 @@
 package com.jronell.serviceImpl;
 
+import com.jronell.dao.EventDao;
 import com.jronell.dao.impl.EventDaoImpl;
 import com.jronell.model.Event;
 import com.jronell.model.EventAddress;
@@ -9,7 +10,8 @@ import com.jronell.service.EventService;
 public class EventServiceImpl implements EventService {
 
 	//public ArrayList<Event> eventList = new ArrayList<Event>();
-	
+	private EventDao eventDao;
+
 	@Override
 	public void addEvent(Event event) {
 		// TODO Auto-generated method stub
@@ -21,7 +23,7 @@ public class EventServiceImpl implements EventService {
 	    event.setAddress(address);
 	    event.setOrganizingUser(organizerId);
 	    
-		EventDaoImpl eventDao = new EventDaoImpl();
+		
 	   	eventDao.addEvent(event);
 	  
 	}
@@ -69,5 +71,11 @@ public class EventServiceImpl implements EventService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void setEventDao(EventDao eventDao) {
+		this.eventDao = eventDao;
+	}
+	
+
 
 }

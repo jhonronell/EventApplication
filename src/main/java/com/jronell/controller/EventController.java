@@ -4,18 +4,15 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jronell.dao.impl.EventDaoImpl;
-import com.jronell.model.EventAddress;
+import com.jronell.factory.ServiceFactory;
 import com.jronell.model.Event;
 import com.jronell.model.EventType;
 import com.jronell.model.Status;
-import com.jronell.model.User;
-import com.jronell.serviceImpl.EventServiceImpl;
+import com.jronell.service.EventService;
 
 /**
  * Servlet implementation class EventController
@@ -57,9 +54,12 @@ public class EventController extends HttpServlet {
 		    
 		   	Event event = new Event( eventType , name , eventDateStart ,eventDateEnd, eventDatePosted,  eventStatus );
 		   			   			  
-		    EventServiceImpl eventService = new EventServiceImpl();		    
-		    eventService.addEvent(event);
+		    //EventServiceImpl eventService = new EventServiceImpl();		    
+		    //eventService.addEvent(event);
 		    
+		    EventService eventService = ServiceFactory.createEventService();
+	        eventService.addEvent(event);
+	        
 			request.setAttribute("event1",event);  
 
 	        RequestDispatcher rd=request.getRequestDispatcher("display.jsp");  

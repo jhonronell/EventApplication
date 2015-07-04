@@ -40,11 +40,11 @@ public class UserProfileController extends HttpServlet {
 		EventDaoImpl eventList = new EventDaoImpl();
 		
 		User user = userProfileImpl.getUser(  Integer.valueOf(request.getParameter("userId"))  );
-		user.setEventList(  eventList.getEvents( user.getId() ) );
+	//	user.setEventList(  eventList.getEvents( user.getId() ) );
 		
 		response.setContentType("text/html");
 		request.setAttribute("userprofile", user);
-		request.setAttribute("userEvents", user.getEvents());
+	//	request.setAttribute("userEvents", user.getEvents());
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  
 		requestDispatcher.forward(request, response);  
 	}

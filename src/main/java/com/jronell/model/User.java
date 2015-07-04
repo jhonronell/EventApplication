@@ -32,17 +32,12 @@ public class User {
 	private Status status;
 	private UserType userType;
 	private InterestList interestList; 
-	private EventList eventList;
-
 	
 	
 	public int getUserId(){
 		return this.id;
 	}
 	
-	public void setEventList(EventList eventList){
-		this.eventList = eventList;
-	}
 	
 	public void addUserPersonalInformation(int id, String firstName, String lastName, String middleName, Gender gender,
 			Date dateOfBirth, int age)
@@ -81,9 +76,7 @@ public class User {
 		this.interestList = newInterestList;
 	}
 
-	public void setEvents(EventList events) {
-		this.eventList = events;
-	}
+
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
@@ -109,9 +102,7 @@ public class User {
 		this.age = age;
 	}
 
-	public ArrayList<Event> getEvents() {
-		return  new ArrayList<Event>(this.eventList.getEventList());
-	}
+
 
 	public UserType getUserType() {
 		return userType;

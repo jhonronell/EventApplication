@@ -15,14 +15,14 @@
    		request.getAttribute("eventListResult");  
 	%>
 	<table>
-		<c:forEach var="eventList" items="${eventListResult}">
+		<c:forEach var="row" items="${eventListResult}">
 			<tr>
-				<td><c:out value="${eventList.type}" /></td>
-				<td><c:out value="${eventList.name}" /></td>
-				<td><c:out value="${eventList.eventStartDate}" /></td>
-				<td><c:out value="${eventList.eventEndDate}" /></td>
-				<td><c:out value="${eventList.eventStartDate}" /></td>
-				<td><c:out value="${eventList.status}" /></td>
+				<td><c:out value="${row.type}" /></td>
+				<td><c:out value="${row.name}" /></td>
+				<td><c:out value="${row.eventStartDate}" /></td>
+				<td><c:out value="${row.eventEndDate}" /></td>
+				<td><c:out value="${row.eventStartDate}" /></td>
+				<td><c:out value="${row.status}" /></td>
 			</tr>
 		</c:forEach>
 	</table>

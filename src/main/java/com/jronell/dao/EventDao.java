@@ -3,10 +3,11 @@ package com.jronell.dao;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import com.jronell.model.EventAddress;
 import com.jronell.model.Event;
-import com.jronell.model.EventList;
+
 import com.jronell.model.EventType;
 
 public interface EventDao {
@@ -24,10 +25,10 @@ public interface EventDao {
 	
 	public Collection<Event> getEvents(EventType eventType);
 
-	public EventList getEvents();
+	public List<Event> getEvents();
 
 	void addEvent(Event event, EventAddress address);
 
-	public EventList getEvents(int userId);
+	public List<Event> getEvents(int userId);
 	
 }

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
+
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,9 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jronell.dao.impl.EventDaoImpl;
 import com.jronell.dao.impl.UserDaoImpl;
+import com.jronell.factory.ServiceFactory;
 import com.jronell.model.Event;
-import com.jronell.model.EventList;
+import com.jronell.model.EventType;
 import com.jronell.model.User;
+import com.jronell.service.EventService;
 
 /**
  * Servlet implementation class EventListController
@@ -38,14 +43,16 @@ public class EventListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 			response.setContentType("text/html");
-			EventDaoImpl eventDao = new EventDaoImpl();
-			EventList eventList = eventDao.getEvents(); 
-			request.setAttribute("eventListResult", eventList.getEventList() );
-			RequestDispatcher requestDispatcher=request.getRequestDispatcher("eventList.jsp");  
+		
+			EventService eventService = ServiceFactory.createEventService();
+			List<Event> result = eventService.getAllEvents();
+		
+			request.setAttribute("eventListResult", result );
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("EventList.jsp");  
 			requestDispatcher.forward(request, response);  
 	}
 
-	/**
+	/** 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

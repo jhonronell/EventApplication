@@ -62,7 +62,12 @@ public class Event {
 	public Event( EventType eventType, String name, String eventStartDate,
 			String eventEndDate, String datePosted, Status status,int organizerId ){
 	
-		super();
+		this.type = eventType;
+		this.name = name;
+		this.eventEndDate = eventEndDate;
+		this.datePosted = datePosted;
+		this.eventStartDate = eventStartDate;
+		this.status = status;
 		this.organizingUser = organizerId;
 		
 	}

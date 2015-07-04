@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.jronell.dao.InterestDao;
 import com.jronell.jdbc.ConnectionManager;
 import com.jronell.model.Event;
-import com.jronell.model.EventList;
+
 import com.jronell.model.EventType;
 import com.jronell.model.Interest;
 import com.jronell.model.InterestList;

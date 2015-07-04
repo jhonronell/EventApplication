@@ -6,14 +6,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import com.jronell.dao.EventDao;
+import com.jronell.factory.ServiceFactory;
 import com.jronell.jdbc.ConnectionManager;
-import com.jronell.model.EventAddress;
 import com.jronell.model.Event;
-import com.jronell.model.EventList;
+import com.jronell.model.EventAddress;
 import com.jronell.model.EventType;
 import com.jronell.model.Status;
+import com.jronell.service.EventService;
 
 public class EventDaoImpl implements EventDao {
 
@@ -56,9 +58,11 @@ public class EventDaoImpl implements EventDao {
 		    }
 		    
 		    event.setEventId( autoIncKeyFromApi );
-			
+		
+		    
 			AddressDaoImpl addressDao = new AddressDaoImpl();
 			//not sure if this is code smell
+			
 			event.address.setEventId(autoIncKeyFromApi);
 			addressDao.addEventAddress(  event.getAddress() );
 			
@@ -80,9 +84,9 @@ public class EventDaoImpl implements EventDao {
 
 
 	@Override
-	public EventList getEvents(int userId) {
+	public List<Event> getEvents(int userId) {
 		
-		EventList eventList = new EventList();
+		ArrayList<Event> eventList = new ArrayList<Event>(); 
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -109,7 +113,7 @@ public class EventDaoImpl implements EventDao {
 			 	 
 		         Event newEventRs = new Event(type, name, eventStartDate, eventEndDate, datePosted, status, organizing_user);
 		         
-		         eventList.addEvent(newEventRs);
+		         eventList.add(newEventRs);
 		         
 		    }
 		    rs.close();
@@ -178,9 +182,9 @@ public class EventDaoImpl implements EventDao {
 	}
 
 	@Override
-	public EventList getEvents() {
+	public List<Event> getEvents() {
 		
-		EventList eventList = new EventList();
+		List<Event> eventList = new ArrayList<Event>();
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -203,11 +207,12 @@ public class EventDaoImpl implements EventDao {
 		         String eventEndDate = rs.getString("endDate");  
 		         String datePosted = rs.getString("datePosted");
 		         Status status = Status.validate( rs.getString("status") ); 
+		         
 		         int organizing_user = rs.getInt("organizing_user");
 			 	 
 		         Event newEventRs = new Event(type, name, eventStartDate, eventEndDate, datePosted, status, organizing_user);
-		         
-		         eventList.addEvent(newEventRs);
+		      
+		         eventList.add(newEventRs);
 		         
 		    }
 		    rs.close();

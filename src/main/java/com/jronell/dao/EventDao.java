@@ -23,11 +23,9 @@ public interface EventDao {
 	
 	public Event getEvent(int eventID);
 	
-	public Collection<Event> getEvents(EventType eventType);
+	public List<Event> getEvents(EventType eventType);
 
 	public List<Event> getEvents();
-
-	void addEvent(Event event, EventAddress address);
 
 	public List<Event> getEvents(int userId);
 	

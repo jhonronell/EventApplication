@@ -59,4 +59,15 @@
     <url-pattern>/userProfile</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>AddEvent</servlet-name>
+    <servlet-class>com.jronell.controller.EventController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddEvent</servlet-name>
+    <url-pattern>/addEvent</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>

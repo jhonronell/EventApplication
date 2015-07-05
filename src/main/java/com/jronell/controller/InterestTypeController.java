@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jronell.dao.InterestType;
+
+
 import com.jronell.dao.impl.InterestDaoImpl;
 import com.jronell.dao.impl.InterestTypeDaoImpl;
 import com.jronell.model.Interest;
+import com.jronell.model.InterestType;
 
 /**
  * Servlet implementation class InterestTypeController
@@ -52,10 +54,10 @@ public class InterestTypeController extends HttpServlet {
 	   	int userId = Integer.valueOf( request.getParameter("userId") );
 	 	
 
-	 	InterestType newInterestType = new InterestType();
+	 	InterestType newInterestType = new InterestType(name);
 	 	newInterestType.setStatus("Active");
 	 	newInterestType.setUserId(userId);
-	 	newInterestType.setName(name);
+	 	
 	 	
 	   	InterestTypeDaoImpl interestTypeDao = new InterestTypeDaoImpl();
 	   	interestTypeDao.addInterestType(newInterestType);

@@ -11,18 +11,31 @@ public class Event {
 	public EventAddress address;
 	private EventType type;
 	private String name;
-	
+	private String additionalDetails;
+	private String description;
 	private String eventStartDate; 
 	private String eventEndDate;
 	private String datePosted; 
 	private Status status;
-	private int organizingUser;
+	private int organizerId;
 	
 	
 	private ArrayList<User> participants  = new ArrayList<User>();
 
-	public void setOrganizingUser(int organizerId){
-		this.organizingUser = organizerId;
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescrition(String description){
+		this.description = description;
+	}
+	public String getAdditionalDetails(){
+		return this.additionalDetails;
+	}
+	public void setAdditionalDetails(String additionalDetails){
+		this.additionalDetails = additionalDetails;
+	}
+	public void setOrganizerId(int organizerId){
+		this.organizerId = organizerId;
 	}
 	
 	public void setAddress(EventAddress address){
@@ -30,35 +43,10 @@ public class Event {
 		this.address = address;
 	}
 	
-	public Event(EventAddress address, EventType type, String name, String eventStartDate,
-				String eventEndDate, String datePosted, Status status ){
-		
-		this.address = address;
-		this.type = type;
-		this.name = name;
-		this.eventEndDate = eventEndDate;
-		this.datePosted = datePosted;
-		this.eventStartDate = eventStartDate;
-		this.status = status;
-		
-	
-		
-	}
-	
 	public int getEventId() {
 		return this.eventId;
 	}
-	public Event( EventType eventType, String name, String eventStartDate,
-			String eventEndDate, String datePosted, Status status ){
 	
-		
-		this.type = eventType;
-		this.name = name;
-		this.eventEndDate = eventEndDate;
-		this.datePosted = datePosted;
-		this.eventStartDate = eventStartDate;
-		this.status = status;
-	}
 	public Event( EventType eventType, String name, String eventStartDate,
 			String eventEndDate, String datePosted, Status status,int organizerId ){
 	
@@ -68,10 +56,23 @@ public class Event {
 		this.datePosted = datePosted;
 		this.eventStartDate = eventStartDate;
 		this.status = status;
-		this.organizingUser = organizerId;
+		this.organizerId = organizerId;
 		
 	}
-
+	
+	
+	public Event( EventType eventType, String name, String eventStartDate,
+			String eventEndDate, String datePosted, Status status,String description ){
+	
+		this.type = eventType;
+		this.name = name;
+		this.eventEndDate = eventEndDate;
+		this.datePosted = datePosted;
+		this.eventStartDate = eventStartDate;
+		this.status = status;
+		this.description = description;
+		
+	}
 	public void setEventId(int eventId) {
 		this.eventId = eventId;
 	}
@@ -108,9 +109,9 @@ public class Event {
 	}
 
 
-	public int getOrganizingUser() {
-		System.out.println(this.organizingUser);
-		return this.organizingUser;
+	public int getOrganizerId() {
+		System.out.println(this.organizerId);
+		return this.organizerId;
 	}
 
 

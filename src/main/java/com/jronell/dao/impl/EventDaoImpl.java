@@ -33,38 +33,39 @@ public class EventDaoImpl implements EventDao {
 			Statement myStatement = conn.createStatement();
 			ResultSet rs = null;
 			   
-			String query = "INSERT INTO hopIn.Events ( type, name, startDate, endDate, datePosted, status, organizing_user,id)"
+			String query = "INSERT INTO hopIn.Events ( type, name, startDate, endDate, datePosted, status, organizing_user,description)"
 				 	 + "VALUES("
 				 	 + " '" + event.getType()  + "',"
 				 	 + " '" + event.getName()  + "',"
 				 	 + " '" + event.getEventStartDate()  + "',"
 				 	 + " '" + event.getEventEndDate()  + "',"
 				 	 + " '" + event.getDatePosted()  + "',"
-				 	 + " '" + event.getStatus()  + "'"
-				 	 + ",'" + event.getOrganizingUser()  + "',0)";
+				 	 + " '" + event.getStatus()  + "',"
+				 	 + " '" + event.getOrganizerId()  + "',"
+				 	 + " '" + event.getDescription()  + "'" + ")";
 			System.out.println(query);
 			
 			myStatement.executeUpdate(query,   Statement.RETURN_GENERATED_KEYS);
 		    
-		    int autoIncKeyFromApi = -1;
+		    int eventId = -1;
 
 		    rs = myStatement.getGeneratedKeys();
 
 		    if (rs.next()) {
-		        autoIncKeyFromApi = rs.getInt(1);
+		        eventId = rs.getInt(1);
 		    } else {
 
 		        // throw an exception from here
 		    }
 		    
-		    event.setEventId( autoIncKeyFromApi );
+		    event.setEventId( eventId );
 		
 		    
 			AddressDaoImpl addressDao = new AddressDaoImpl();
 			//not sure if this is code smell
 			
-			event.address.setEventId(autoIncKeyFromApi);
-			addressDao.addEventAddress(  event.getAddress() );
+			event.address.setEventId(eventId);
+			addressDao.addEventAddress( event.getAddress());
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -130,44 +131,12 @@ public class EventDaoImpl implements EventDao {
 	}
 
 	@Override
-	public Collection<Event> getEvents(EventType eventType) {
+	public List<Event> getEvents(EventType eventType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void addEvent(Event event,EventAddress addresss) {
-		// TODO Auto-generated method stub
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			ConnectionManager conManager = new ConnectionManager();
-			Connection conn = conManager.getConnection();
-			Statement myStatement = conn.createStatement();
-			   
-			String query = "INSERT INTO hopIn.Events ( type, name, startDate, endDate, datePosted, status, organizing_user)"
-				 	 + "VALUES("
-				 	 + " '" + event.getType()  + "',"
-				 	 + " '" + event.getName()  + "',"
-				 	 + " '" + event.getEventStartDate()  + "',"
-				 	 + " '" + event.getEventEndDate()  + "',"
-				 	 + " '" + event.getDatePosted()  + "',"
-				 	 + " '" + event.getStatus()  + "'"
-				 	 + ",'" + event.getOrganizingUser()  + "')";
-			
-			System.out.println(query);
-			myStatement.executeUpdate(query);
-			
-		
-			
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			
-		
-		}
-	}
+	
 
 	@Override
 	public void deleteEvent(int eventId) {

@@ -1,21 +1,18 @@
 package com.jronell.model;
 
-public class EventAddress{
+public class EventAddress extends Address{
 	
-	public int addressId;
-	private String street;
-	private String brgy;
-	private String city;
-	private String town;
-	private String region;
-	private String province;
-	private String country; 
-	private String state;
-	private boolean isActive; 
 	private int eventId;
 	
+	public EventAddress(String street, String brgy, String city, String region, String province){
 	
-	
+		this.street = street;
+		this.brgy = brgy;
+		this.city = city;
+		this.region = region;
+		this.province = province;
+		
+	}
 	
 	public void setEventId(int eventId){
 		

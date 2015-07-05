@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jronell.dao.InterestType;
+
 import com.jronell.dao.impl.InterestTypeDaoImpl;
 import com.jronell.dao.impl.UserDaoImpl;
 import com.jronell.model.User;

@@ -60,12 +60,13 @@ public class EventDaoImpl implements EventDao {
 		    
 		    event.setEventId( eventId );
 		
-		    
-			AddressDaoImpl addressDao = new AddressDaoImpl();
+		    AddressDaoImpl addressDao = new AddressDaoImpl();
 			//not sure if this is code smell
 			
 			event.address.setEventId(eventId);
 			addressDao.addEventAddress( event.getAddress());
+			
+			
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

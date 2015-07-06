@@ -66,13 +66,15 @@ public class EventController extends HttpServlet {
 		   	String description = request.getParameter("description");
 		   	Event event = new Event( eventType , name , eventDateStart ,eventDateEnd, eventDatePosted,  eventStatus, description );
 			
+		   	String category = request.getParameter("category");
+		   	
 		   	
 		   	String street = request.getParameter("street");
 		   	String brgy = request.getParameter("brgy");
 		   	String city = request.getParameter("city");
 		   	String region = request.getParameter("region");
 		   	String province = request.getParameter("province");
-		  	EventAddress address = new EventAddress(street,brgy,city,region,province);
+		   	EventAddress address = new EventAddress(street,brgy,city,region,province);
 			   	
 		   	int organizerId = 1; 
 			event.setAddress(address);

@@ -32,6 +32,7 @@ public class User {
 	private Status status;
 	private UserType userType;
 	private InterestList interestList; 
+	private String shoutOut;
 	
 	
 	public int getUserId(){

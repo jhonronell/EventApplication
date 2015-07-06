@@ -10,20 +10,58 @@
 
 
 
-<form id="form1" name="form1" method="post" action="user">
-  <p>&nbsp;</p>
+
+<table align="center">
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Id:</td>
+      <td><input type="text" name="id" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">FirstName:</td>
+      <td><input type="text" name="firstName" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">MiddleName:</td>
+      <td><input type="text" name="middleName" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">LastName:</td>
+      <td><input type="text" name="lastName" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Gender:</td>
+      <td><input type="text" name="gender" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">DateOfBirth:</td>
+      <td><input type="text" name="dateOfBirth" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Age:</td>
+      <td><input type="text" name="age" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Username:</td>
+      <td><input type="text" name="username" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Password:</td>
+      <td><input type="text" name="password" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Status:</td>
+      <td><input type="text" name="status" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">UserType:</td>
+      <td><input type="text" name="userType" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">&nbsp;</td>
+      <td><input type="submit" value="Insert record" /></td>
+    </tr>
+  </table>
   
-  <p>
-     <label>First Name  </label> <input type="text" name="firstName" class="firstName"  id="name" />
-  </p>
-   <p>
-     <label>Middle Name  </label> <input type="text" name="middleName" class="middleName"  id="name" />
-  </p>
-   <p>
-     <label>Last Name  </label> <input type="text" name="lastName" class="lastName"  id="lastname" />
-  </p>
   
- <button type="submit"> Submit </button>
-</form>
 </body>
 </html>

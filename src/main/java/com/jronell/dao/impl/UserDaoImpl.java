@@ -25,16 +25,18 @@ public class UserDaoImpl implements UserDao {
 			Statement myStatement = conn.createStatement();
 			ResultSet rs = null;
 			   
-		/*	String query = "INSERT INTO hopIn.User (firstName, middleName, lastName, gender, dateOfBirth, age, username, password, status, userType) "
+			String query = "INSERT INTO hopIn.User (firstName, middleName, lastName, gender, dateOfBirth, age, username, password, status, userType) "
 			+ "VALUES('" + user.getFirstName()  + "', '" + user.getMiddleName()  + "', "
 					+ "'" + user.getLastName()  + "', ''" + user.getGender()  + "',"
 					+ "'" + user.getDateOfBirth()  + "', '" + user.getAge()  + "', "
 					+ "'" + user.getUsername()  + "', '" + user.getPassword()  + "',"
-					+ " '" + user.getStatus()  + "', '" + user.getUserType() + "');";*/
+					+ " '" + user.getStatus()  + "', '" + user.getUserType() + "');";
 			
-			String query = "INSERT INTO hopIn.User (firstName, middleName, lastName ) "
-					+ "VALUES('" + user.getFirstName()  + "', '" + user.getMiddleName()  + "', "
-							+ "'" + user.getLastName() + "');";
+		//	String query = "INSERT INTO hopIn.User (firstName, middleName, lastName ) "
+		//			+ "VALUES('" + user.getFirstName()  + "', '" + user.getMiddleName()  + "', "
+		//					+ "'" + user.getLastName() + "');";
+			
+			
 			System.out.println(query);
 			
 			myStatement.executeUpdate(query,   Statement.RETURN_GENERATED_KEYS);

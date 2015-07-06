@@ -51,8 +51,18 @@
 			    
 			    
 			  </p>
+			  <p>
+			   <label>Meet-Up Place </label>   
+			    <textarea name="meetUpPlace"> </textarea>
+			  </p>
+			  <p>
+			   <label>Meet-Up Time </label>   
+			   <input type="text" name="eventDatePosted" class="meetUpTime"  id="eventDatePosted" />
+			  
+			  </p>
+			  timePicker
 			  <p>&nbsp;</p>
-			 <button type="submit" class="pure-button pure-button-primary">Next</button>
+			 <button type="button" class="pure-button pure-button-primary next">Next</button>
 			  
 						
 		</div>
@@ -105,22 +115,28 @@
 			      <td><input type="submit" value="Insert record" /></td>
 			    </tr>
 			  </table>
+			  
+			   <button  type="button" class="pure-button pure-button-primary next">Next</button>
 		</div>
 		<div id="tabs-3">
 			
-		
-				<table class="pure-table pure-table-horizontal">
-					<c:forEach var="event" items="${userEvents}">
-						<tr>
-							<td><c:out value="${event.type}" /></td>
-							<td><c:out value="${event.name}" /></td>
-							<td><c:out value="${event.eventStartDate}" /></td>
-							<td><c:out value="${event.eventEndDate}" /></td>
-							<td><c:out value="${event.eventStartDate}" /></td>
-							<td><c:out value="${event.status}" /></td>
-						</tr>
-					</c:forEach>
-				</table>
+			   Pre Event Meeting
+			   <div>
+			   Date: <input type="text" name="eventId" value="" size="32" />
+			   </div>
+			   <div>
+			   Time:<input type="text" name="eventId" value="" size="32" />
+			   </div>
+			   <div>
+			   Where:<input type="text" name="eventId" value="" size="32" />
+			   </div> 
+			   <div> 
+			   Event Additional Info
+			   <textarea> </textarea>
+			   </div>
+			   
+				
+			 <button  type="button"  class="pure-button pure-button-primary next">Next</button>
 		</div>
 		<div id="tabs-4">
 			
@@ -128,11 +144,15 @@
 				<table class="pure-table pure-table-horizontal">
 					<c:forEach var="interest" items="${interestTypeList}">
 						<tr>
+							<td>
+							<input type="checkbox" name="interestType" value="${interest.id}">
+</td>
 							<td><c:out value="${interest.id}" /></td>
 							<td><c:out value="${interest.name}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
+				 <button type="submit" class="pure-button pure-button-primary">Next</button>
 		</div>
 	</div>
 
@@ -144,8 +164,14 @@
 
 	<script>
 		$(function() {
-			$("#tabs").tabs();
 			
+			$(".next").on("click",function(){
+				 var nextTab = $( "#tabs" ).tabs( "option", "active" ) + 1;
+				 $( "#tabs" ).tabs({ active: nextTab });
+			})
+			
+		    $('.meetUpTime').timepicker({scrollbar:true});
+			$("#tabs").tabs();
 			$( ".datepicker" ).datepicker();
 		});
 	</script>

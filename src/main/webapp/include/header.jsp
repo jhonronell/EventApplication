@@ -10,8 +10,11 @@
 	<title>Home</title>
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<link href="plugins/jquery-ui.css" rel="stylesheet">
+	<link href="plugins/jquery.timepicker.css" rel="stylesheet">
 	<script src="plugins/external/jquery/jquery.js"></script>
 	<script src="plugins/jquery-ui.js"></script>
+	<script src="plugins/jquery.timepicker.js"></script>
+	
 	<style> 
 		body { font-size:12px; }
 	</style>

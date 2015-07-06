@@ -51,12 +51,20 @@ public class UserController extends HttpServlet {
 	 	String firstName = request.getParameter("firstName");
 	 	String lastName = request.getParameter("lastName");
 		String middleName = request.getParameter("middleName");
-	   	System.out.println("controller:" + lastName);
+
+	 	String gender = request.getParameter("gender");
+	 	String dateOfBirth = request.getParameter("dateOfBirth");
+	
 	 	User newUser = new User();
 		
 	 	newUser.setFirstName(firstName);
 	 	newUser.setMiddleName(middleName);
 	 	newUser.setLastName(lastName);
+	 	
+	 	
+	 	
+	 	
+	 	
 	 	
 	 	UserDaoImpl userDaoImpl = new UserDaoImpl();
 	 	userDaoImpl.addUser(newUser);

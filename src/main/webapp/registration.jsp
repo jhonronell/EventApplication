@@ -1,15 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<jsp:include page="include/header.jsp" />
 
 
-
+<form action="registerUser" method="post">
 
 <table align="center">
     <tr valign="baseline">
@@ -34,7 +28,7 @@
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">DateOfBirth:</td>
-      <td><input type="text" name="dateOfBirth" value="" size="32" /></td>
+      <td><input type="text" class="datepicker" name="dateOfBirth" value="" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Age:</td>
@@ -58,10 +52,11 @@
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
-      <td><input type="submit" value="Insert record" /></td>
+      <td><input type="submit" value="Register" /></td>
     </tr>
   </table>
   
-  
-</body>
-</html>
+</form>
+<script> 
+$( ".datepicker" ).datepicker();
+</script>

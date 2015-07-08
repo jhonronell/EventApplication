@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void addUser(User user) {
 		// TODO Auto-generated method stub
-		
+		userDao.addUser(user);
 	}
 
 	@Override

@@ -25,17 +25,12 @@ public class UserDaoImpl implements UserDao {
 			Statement myStatement = conn.createStatement();
 			ResultSet rs = null;
 			   
-			String query = "INSERT INTO hopIn.User (firstName, middleName, lastName, gender, dateOfBirth, age, username, password, status, userType) "
+			String query = "INSERT INTO hopIn.User (firstName, middleName, lastName,gender , dateOfBirth, username, password) "
 			+ "VALUES('" + user.getFirstName()  + "', '" + user.getMiddleName()  + "', "
-					+ "'" + user.getLastName()  + "', ''" + user.getGender()  + "',"
-					+ "'" + user.getDateOfBirth()  + "', '" + user.getAge()  + "', "
-					+ "'" + user.getUsername()  + "', '" + user.getPassword()  + "',"
-					+ " '" + user.getStatus()  + "', '" + user.getUserType() + "');";
-			
-		//	String query = "INSERT INTO hopIn.User (firstName, middleName, lastName ) "
-		//			+ "VALUES('" + user.getFirstName()  + "', '" + user.getMiddleName()  + "', "
-		//					+ "'" + user.getLastName() + "');";
-			
+					+ "'" + user.getLastName()  + "', '" + user.getGender()  + "',"
+					+ "'" + user.getDateOfBirth()  + "',  "
+					+ "'" + user.getUsername()  + "', '" + user.getPassword()  + "');";
+					
 			
 			System.out.println(query);
 			
@@ -110,9 +105,11 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void addUser() {
+	public void deleteUser(int userId) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 }

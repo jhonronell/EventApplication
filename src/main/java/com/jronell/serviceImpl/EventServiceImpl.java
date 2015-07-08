@@ -40,9 +40,10 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public void getEventByUserId(int userId) {
+	public List<Event> getEventByUserId(int userId) {
 		// TODO Auto-generated method stub
 		
+		return eventDao.getEvents(userId);
 	}
 	
 

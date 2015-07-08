@@ -6,7 +6,17 @@ import java.util.Date;
 public class User {
 
 	public enum UserType{ CLIENT, ADMIN };
-	public enum Gender { MALE, FEMALE } 
+	public enum Gender { MALE, FEMALE;
+	
+		
+	}
+	public Gender checkGender(String gender){
+		
+		if(gender.equalsIgnoreCase(Gender.MALE.toString())){
+			return Gender.MALE;
+		}
+		return Gender.FEMALE;
+	}
 	
 	private String firstName;
 	public String getFirstName() {
@@ -20,7 +30,7 @@ public class User {
 	private String lastName;
 	private String middleName;
 	private Gender gender;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	private int age;
 	private  int id;
 	
@@ -41,7 +51,7 @@ public class User {
 	
 	
 	public void addUserPersonalInformation(int id, String firstName, String lastName, String middleName, Gender gender,
-			Date dateOfBirth, int age)
+			String dateOfBirth, int age)
 	{
 		this.firstName  = firstName;
 		this.lastName = lastName;
@@ -95,7 +105,7 @@ public class User {
 		this.gender = gender;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -133,7 +143,7 @@ public class User {
 		return gender;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 

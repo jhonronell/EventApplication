@@ -15,7 +15,7 @@ public interface EventService {
 	
 	public List<Event> getAllEvents();
 	
-	public void getEventByUserId(int userId);
+	public List<Event> getEventByUserId(int userId);
 	
 	
 	

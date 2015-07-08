@@ -3,16 +3,19 @@ package com.jronell.controller;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.junit.runner.Request;
 
-import com.jronell.dao.impl.InterestTypeDaoImpl;
-import com.jronell.dao.impl.UserDaoImpl;
+import com.jronell.factory.ServiceFactory;
 import com.jronell.model.User;
+import com.jronell.model.User.Gender;
+import com.jronell.service.UserService;
 
 /**
  * Servlet implementation class UserController
@@ -37,7 +40,8 @@ public class UserController extends HttpServlet {
 		
 		
 		
-		
+		  RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");  
+	      rd.forward(request, response);  
 	}
 
 	/**
@@ -60,19 +64,22 @@ public class UserController extends HttpServlet {
 	 	newUser.setFirstName(firstName);
 	 	newUser.setMiddleName(middleName);
 	 	newUser.setLastName(lastName);
+		newUser.setDateOfBirth( dateOfBirth);
+	 	newUser.setGender(  newUser.checkGender(gender)     );
+	 	
+	
+	    UserService userService = ServiceFactory.createUserService();
+	    userService.addUser(newUser);
 	 	
 	 	
-	 	
-	 	
-	 	
-	 	
-	 	UserDaoImpl userDaoImpl = new UserDaoImpl();
-	 	userDaoImpl.addUser(newUser);
-	 	  
 	 	request.setAttribute("userprofile",newUser);  
-
-        RequestDispatcher rd = request.getRequestDispatcher("user.jsp");  
-        rd.forward(request, response);  
+	 	System.out.println(request.getContentType());
+	 	
+	 
+	 	
+	 	  request.getRequestDispatcher("userProfile").forward(request, response);
+	 	   
+      
 	}
 
 }

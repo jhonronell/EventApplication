@@ -10,10 +10,6 @@ public class Interest {
 	public Interest(String name){
 		this.name = name;
 	}
-	public Interest(String name,int id){
-		this.name = name;
-	}
-	
 	
 	public String getName() {
 		return name;

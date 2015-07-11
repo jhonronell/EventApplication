@@ -48,9 +48,7 @@ public class User {
 	public int getUserId(){
 		return this.id;
 	}
-	public void setUserId(int userId){
-		this.id = userId;
-	}
+	
 	
 	public void addUserPersonalInformation(int id, String firstName, String lastName, String middleName, Gender gender,
 			String dateOfBirth, int age)
@@ -175,7 +173,7 @@ public class User {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public EventAddress getAddress() {

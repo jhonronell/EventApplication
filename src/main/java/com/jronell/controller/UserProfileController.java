@@ -14,8 +14,6 @@ import com.jronell.dao.impl.UserDaoImpl;
 import com.jronell.factory.ServiceFactory;
 import com.jronell.model.User;
 import com.jronell.service.EventService;
-import com.jronell.service.InterestService;
-import com.jronell.service.UserService;
 
 /**
  * Servlet implementation class UserProfileController
@@ -40,20 +38,15 @@ public class UserProfileController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		UserDaoImpl userProfileImpl = new UserDaoImpl();
-	
+		EventDaoImpl eventList = new EventDaoImpl();
 		
-	    User user = new User();
-	    user.setUserId(1);
+		User user = userProfileImpl.getUser(  Integer.valueOf(request.getParameter("userId"))  );
 	//	user.setEventList(  eventList.getEvents( user.getId() ) );
 		EventService eventService = ServiceFactory.createEventService();
-		InterestService interestService = ServiceFactory.createInterestService();
 		
 		response.setContentType("text/html");
 		request.setAttribute("userprofile", user);
-		request.setAttribute("userEvents", eventService.getEventByUserId( 1 ));
-		request.setAttribute("userInterest", interestService.getUserInterestList( 1));
-		
-		
+		request.setAttribute("userEvents", eventService.getEventByUserId(user.getId() ));
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  
 		requestDispatcher.forward(request, response);  
 		doPost(request,response);
@@ -63,10 +56,10 @@ public class UserProfileController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//do the doGet Method
-	//	System.out.println(request.getParameter("userId") );
+		System.out.println(request.getParameter("userId") );
 		if(	request.getParameter("userId") != null)
 		{
-		//	doGet(request,response);
+			doGet(request,response);
 		}
 		
 	}

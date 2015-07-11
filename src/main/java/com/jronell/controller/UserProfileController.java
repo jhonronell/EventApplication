@@ -48,7 +48,7 @@ public class UserProfileController extends HttpServlet {
 		request.setAttribute("userprofile", user);
 <<<<<<< HEAD
 		request.setAttribute("userEvents", eventService.getEventByUserId( 1 ));
-		request.setAttribute("userInterest", interestService.getUserInterestList( 1));
+		request.setAttribute("userInterest", interestService.getUserInterestList(1));
 		
 		
 =======

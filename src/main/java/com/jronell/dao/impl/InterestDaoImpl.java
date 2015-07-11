@@ -65,12 +65,12 @@ public class InterestDaoImpl implements InterestDao {
 			String sql = "SELECT * FROM hopIn.Interest where userId=" + userId  + ";";
 		    System.out.println(sql);
 		    ResultSet rs = myStatement.executeQuery(sql);
-//		    while(rs.next()){
-//		         int id = rs.getInt("id");  
-//		         String name = rs.getString("name");  
-//		         Interest interest = new Interest(name,id);
-//		         interestList.add(interest);	         
-//		    }
+		    while(rs.next()){
+		         int id = rs.getInt("id");  
+		         String name = rs.getString("name");  
+		         Interest interest = new Interest(name,id);
+		         interestList.add(interest);	         
+		    }
 		    rs.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

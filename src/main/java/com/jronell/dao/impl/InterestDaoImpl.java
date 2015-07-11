@@ -51,6 +51,7 @@ public class InterestDaoImpl implements InterestDao {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<Interest> getUserInterestList(int userId) {
 
 		System.out.println(userId + "<---");
@@ -79,26 +80,40 @@ public class InterestDaoImpl implements InterestDao {
 			e.printStackTrace();
 		}
 		return interestList;
+=======
+	public ArrayList<Interest> getUserInterestList(User user) {
+		// TODO Auto-generated method stub
+		return null;
+>>>>>>> origin/master
 	}
 
 	@Override
 	public List<Interest> getInterestList() {
 		
-		List<Interest> interestList = new ArrayList<Interest>();
+	List interestList = new ArrayList<Interest>();
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
+			
 			String sql = "SELECT * FROM hopIn.Interest;";
+
 		    ResultSet rs = myStatement.executeQuery(sql);
 		    System.out.println(sql);
 		    while(rs.next()){
-		         int id = rs.getInt("id");  
+		    	
+		    	System.out.println(rs.getString("type"));
+		    	
+		         EventType type = EventType.validate(rs.getString("type")); 
 		         String name = rs.getString("name");  
-		         Interest interest = new Interest(name,id);
-		         interestList.add(interest);	         
+		         String eventStartDate = rs.getString("startDate");  
+		         String eventEndDate = rs.getString("endDate");  
+		         
+		        //Interest interst = new Interest();
+		        //interest.addInterest(interest);
+		         
 		    }
 		    rs.close();
 		} catch (ClassNotFoundException e) {
@@ -108,7 +123,12 @@ public class InterestDaoImpl implements InterestDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
+		
+		
 		return null;
+		
+		
 	}
 
 }

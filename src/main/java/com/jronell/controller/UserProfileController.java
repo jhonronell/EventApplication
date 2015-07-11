@@ -51,7 +51,7 @@ public class UserProfileController extends HttpServlet {
 		response.setContentType("text/html");
 		request.setAttribute("userprofile", user);
 		request.setAttribute("userEvents", eventService.getEventByUserId( 1 ));
-		request.setAttribute("userInterest", interestService.getUserInterestList( 1));
+		request.setAttribute("userInterest", interestService.getUserInterestList(1));
 		
 		
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  

@@ -25,7 +25,7 @@ public class InterestServiceImpl implements InterestService {
 	@Override
 	public InterestDao setInterestDao(InterestDao interestDao) {
 		// TODO Auto-generated method stub
-		return null;
+		return this.interestDao = interestDao;
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class InterestServiceImpl implements InterestService {
 	public List<Interest> getUserInterestList(int userId) {
 		
 		
-		return interestDao.getInterestList();
+		return interestDao.getUserInterestList(userId);
 		
 	}
 

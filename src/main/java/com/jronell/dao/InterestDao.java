@@ -13,7 +13,7 @@ public interface InterestDao {
 	
 	public void deleteInterest(Interest interest);
 	
-	public List<Interest> getUserInterestList(User user);
+	public List<Interest> getUserInterestList(int userId);
 	
     public List<Interest> getInterestList();
 	

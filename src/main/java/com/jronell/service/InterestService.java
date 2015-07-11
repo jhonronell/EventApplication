@@ -15,6 +15,6 @@ public interface InterestService {
 	
 	public List<Interest> getInterestList();
 	
-	public List<Interest> getUserInterestList();
+	public List<Interest> getUserInterestList(int userId);
 	
 }

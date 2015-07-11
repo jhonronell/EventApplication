@@ -77,7 +77,7 @@ public class UserController extends HttpServlet {
 	 	
 	 
 	 	
-	 	  request.getRequestDispatcher("userProfile").forward(request, response);
+	 	  request.getRequestDispatcher("userProfile?userId=1").forward(request, response);
 	 	   
       
 	}

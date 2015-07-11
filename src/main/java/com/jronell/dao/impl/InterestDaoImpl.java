@@ -51,38 +51,54 @@ public class InterestDaoImpl implements InterestDao {
 	}
 
 	@Override
-	public ArrayList<Interest> getUserInterestList(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<Interest> getUserInterestList(int userId) {
 
-	@Override
-	public List<Interest> getInterestList() {
-		
-	List interestList = new ArrayList<Interest>();
+		System.out.println(userId + "<---");
+		List<Interest> interestList = new ArrayList<Interest>();
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
-			
-			String sql = "SELECT * FROM hopIn.Interest;";
+			String sql = "SELECT * FROM hopIn.Interest where userId=" + userId  + ";";
+		    System.out.println(sql);
+		    ResultSet rs = myStatement.executeQuery(sql);
+//		    while(rs.next()){
+//		         int id = rs.getInt("id");  
+//		         String name = rs.getString("name");  
+//		         Interest interest = new Interest(name,id);
+//		         interestList.add(interest);	         
+//		    }
+		    rs.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return interestList;
+	}
 
+	@Override
+	public List<Interest> getInterestList() {
+		
+		List<Interest> interestList = new ArrayList<Interest>();
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			ConnectionManager conManager = new ConnectionManager();
+			Connection conn = conManager.getConnection();
+			Statement myStatement = conn.createStatement();
+			String sql = "SELECT * FROM hopIn.Interest;";
 		    ResultSet rs = myStatement.executeQuery(sql);
 		    System.out.println(sql);
 		    while(rs.next()){
-		    	
-		    	System.out.println(rs.getString("type"));
-		    	
-		         EventType type = EventType.validate(rs.getString("type")); 
+		         int id = rs.getInt("id");  
 		         String name = rs.getString("name");  
-		         String eventStartDate = rs.getString("startDate");  
-		         String eventEndDate = rs.getString("endDate");  
-		         
-		        //Interest interst = new Interest();
-		        //interest.addInterest(interest);
-		         
+		         Interest interest = new Interest(name,id);
+		         interestList.add(interest);	         
 		    }
 		    rs.close();
 		} catch (ClassNotFoundException e) {
@@ -92,12 +108,7 @@ public class InterestDaoImpl implements InterestDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-		
 		return null;
-		
-		
 	}
 
 }

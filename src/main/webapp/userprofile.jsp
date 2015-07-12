@@ -4,6 +4,9 @@
 		request.getAttribute("userprofile");
 		request.getAttribute("userEvents");
 		request.getAttribute("userInterest");
+		Object user = request.getAttribute("userInfo");
+		
+		session.setAttribute( "user", user );
 	%>
 	<script>
 		$(function() {
@@ -49,7 +52,7 @@
 		<div id="tabs-1">
 			<div>
 				<ul>
-					<li>${userprofile.firstName}</li>
+					<li>${user.firstName}</li>
 					<li>${userprofile.lastName}</li>
 					<li>${userprofile.middleName}</li>
 				</ul>

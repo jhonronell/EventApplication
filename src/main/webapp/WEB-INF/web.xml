@@ -2,12 +2,9 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>EventApplication</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+  
   </welcome-file-list>
   <servlet>
     <servlet-name>eventServlet</servlet-name>
@@ -41,17 +38,14 @@
     <servlet-name>interestType</servlet-name>
     <url-pattern>/interestType</url-pattern>
   </servlet-mapping>
-
-  
   <servlet>
     <servlet-name>userProfile</servlet-name>
     <servlet-class>com.jronell.controller.UserProfileController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>userProfile</servlet-name>
-    <url-pattern>/userProfile</url-pattern>
+    <url-pattern>/userprofile</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>registerUser</servlet-name>
     <servlet-class>com.jronell.controller.UserController</servlet-class>
@@ -60,7 +54,6 @@
     <servlet-name>registerUser</servlet-name>
     <url-pattern>/registerUser</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AddEvent</servlet-name>
     <servlet-class>com.jronell.controller.EventController</servlet-class>
@@ -69,7 +62,20 @@
     <servlet-name>AddEvent</servlet-name>
     <url-pattern>/addEvent</url-pattern>
   </servlet-mapping>
-  
-  
-  
+    <servlet>
+    <servlet-name>Authenticate</servlet-name>
+    <servlet-class>com.jronell.controller.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Authenticate</servlet-name>
+    <url-pattern>/authenticate</url-pattern>
+      </servlet-mapping>
+    <servlet>
+    <servlet-name>LoginPage</servlet-name>
+    <servlet-class>com.jronell.controller.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginPage</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -37,11 +37,8 @@ public class UserController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
-		
-		  RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");  
-	      rd.forward(request, response);  
+		//  RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");  
+	     // rd.forward(request, response);  
 	}
 
 	/**
@@ -51,7 +48,6 @@ public class UserController extends HttpServlet {
 		// TODO Auto-generated method stub
 	response.setContentType("text/html");
 	  	
-
 	 	String firstName = request.getParameter("firstName");
 	 	String lastName = request.getParameter("lastName");
 		String middleName = request.getParameter("middleName");
@@ -60,26 +56,18 @@ public class UserController extends HttpServlet {
 	 	String dateOfBirth = request.getParameter("dateOfBirth");
 	
 	 	User newUser = new User();
-		
 	 	newUser.setFirstName(firstName);
 	 	newUser.setMiddleName(middleName);
 	 	newUser.setLastName(lastName);
 		newUser.setDateOfBirth( dateOfBirth);
 	 	newUser.setGender(  newUser.checkGender(gender)     );
-	 	
-	
 	    UserService userService = ServiceFactory.createUserService();
 	    userService.addUser(newUser);
 	 	
-	 	
 	 	request.setAttribute("userprofile",newUser);  
 	 	System.out.println(request.getContentType());
-	 	
-	 
-	 	
-	 	  request.getRequestDispatcher("userProfile?userId=1").forward(request, response);
-	 	   
-      
+	 	request.getRequestDispatcher("userProfile?userId=1").forward(request, response);
+	 	 
 	}
 
 }

@@ -19,9 +19,6 @@ import com.jronell.service.EventService;
 
 public class EventDaoImpl implements EventDao {
 
-	
-	
-	
 	@Override
 	public void addEvent(Event event) {
 		// TODO Auto-generated method stub

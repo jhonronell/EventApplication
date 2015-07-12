@@ -66,7 +66,7 @@ public class UserProfileController extends HttpServlet {
 	//	System.out.println(request.getParameter("userId") );
 		if(	request.getParameter("userId") != null)
 		{
-		//	doGet(request,response);
+			doGet(request,response);
 		}
 		
 	}

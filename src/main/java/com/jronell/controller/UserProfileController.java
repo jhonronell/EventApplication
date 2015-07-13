@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jronell.dao.impl.EventDaoImpl;
 import com.jronell.dao.impl.UserDaoImpl;
@@ -30,8 +31,6 @@ public class UserProfileController extends HttpServlet {
     public UserProfileController() {
         super();
         // TODO Auto-generated constructor stub
-        
-      
     }
 
 	/**
@@ -39,20 +38,23 @@ public class UserProfileController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UserDaoImpl userProfileImpl = new UserDaoImpl();
 	
+		//session
+		HttpSession session = request.getSession();
+		User userVar = (User) session.getAttribute("user");
+		
+		int userId = userVar.getUserId();
+		request.setAttribute("user",userVar );
 		
 	    User user = new User();
-	    user.setUserId(1);
+	    user.setUserId(userId);
 	//	user.setEventList(  eventList.getEvents( user.getId() ) );
 		EventService eventService = ServiceFactory.createEventService();
 		InterestService interestService = ServiceFactory.createInterestService();
 		
 		response.setContentType("text/html");
-		request.setAttribute("userprofile", user);
-		request.setAttribute("userEvents", eventService.getEventByUserId( 1 ));
-		request.setAttribute("userInterest", interestService.getUserInterestList(1));
-		
+		request.setAttribute("userEvents", eventService.getEventByUserId(userId));
+		request.setAttribute("userInterest", interestService.getUserInterestList(userId));
 		
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  
 		requestDispatcher.forward(request, response);  

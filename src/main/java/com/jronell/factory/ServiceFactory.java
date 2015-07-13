@@ -37,7 +37,7 @@ public class ServiceFactory {
     	interestTypeService.setInterestTypeDao(new InterestTypeDaoImpl());
     	return interestTypeService;
     }
-    public static AuthenticationService createAuthenticationServiceService(){
+    public static AuthenticationService createAuthenticationService(){
     	AuthenticationServiceImpl authenticationService = new AuthenticationServiceImpl();
     	authenticationService.setAuthenticationDao(new AuthenticationDaoImpl());
     	return authenticationService;

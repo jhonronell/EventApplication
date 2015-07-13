@@ -93,7 +93,7 @@ public class EventDaoImpl implements EventDao {
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
 			
-			String sql = "SELECT * FROM hopIn.Events;";
+			String sql = "SELECT * FROM hopIn.Events where id=" + userId;
 
 		    ResultSet rs = myStatement.executeQuery(sql);
 		    System.out.println(sql);

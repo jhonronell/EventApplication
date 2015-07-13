@@ -31,10 +31,15 @@ public class AuthenticationDaoImpl implements AuthenticationDao {
 		   
 		    while(rs.next()){
 		    	System.out.println("true");
-		    	String name = rs.getString("firstName");     
-		        user = new User();
-		        user.setFirstName( name );
-		        
+		    	     
+		    	String firstname = rs.getString("firstName");
+		    	int userId = rs.getInt("id");
+		    	String lastname = rs.getString("firstName");
+		    	user = new User();
+		        user.setFirstName( firstname );
+		        user.setUserId(userId);
+		        user.setLastName(lastname);
+		        System.out.println(user.getUserId());
 		    }
 		    rs.close();
 		} catch (ClassNotFoundException e) {

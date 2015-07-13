@@ -61,7 +61,7 @@ public class InterestDaoImpl implements InterestDao {
 			ConnectionManager conManager = new ConnectionManager();
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
-			String sql = "SELECT * FROM hopIn.Interest where userId=" + userId  + ";";
+			String sql = "SELECT * FROM hopIn.Interest where id=" + userId  + ";";
 		    System.out.println(sql);
 		    ResultSet rs = myStatement.executeQuery(sql);
 		    while(rs.next()){

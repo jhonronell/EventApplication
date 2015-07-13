@@ -4,9 +4,7 @@
 		request.getAttribute("userprofile");
 		request.getAttribute("userEvents");
 		request.getAttribute("userInterest");
-		Object user = request.getAttribute("userInfo");
-		
-		session.setAttribute( "user", user );
+		Object user = request.getAttribute("user");
 	%>
 	<script>
 		$(function() {
@@ -52,7 +50,7 @@
 		<div id="tabs-1">
 			<div>
 				<ul>
-					<li>${user.firstName}</li>
+					<li>${user.id}</li>
 					<li>${userprofile.lastName}</li>
 					<li>${userprofile.middleName}</li>
 				</ul>
@@ -61,7 +59,7 @@
 			</div>
 		</div>
 		<div id="tabs-2">
-			<table class="pure-table pure-table-horizontal">
+				<table class="pure-table pure-table-horizontal">
 					<c:forEach var="interest" items="${userInterest}">
 						<tr>
 							<td><c:out value="${interest.name}" /></td>
@@ -69,9 +67,13 @@
 						</tr>
 					</c:forEach>
 				</table>
+				<button class="button-secondary pure-button">Add</button>
+				<button class="pure-button button-secondary">Edit</button>
+				<button class="pure-button button-secondary">Delete</button>
 		</div>
 		<div id="tabs-3">
-			
+				<button class="button-secondary pure-button">Add</button>
+					
 		
 				<table class="pure-table pure-table-horizontal">
 					<c:forEach var="event" items="${userEvents}">
@@ -85,6 +87,8 @@
 						</tr>
 					</c:forEach>
 				</table>
+				
+				
 		</div>
 	</div>
 

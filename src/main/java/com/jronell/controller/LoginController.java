@@ -46,15 +46,13 @@ public class LoginController extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		AuthenticationService authenticationService = ServiceFactory.createAuthenticationServiceService();
+		AuthenticationService authenticationService = ServiceFactory.createAuthenticationService();
 		User user = null;
 		user = authenticationService.validateUser(username, password);
 	    
 		if(user != null){
-		
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user.getFirstName());
-			
+			HttpSession session = request.getSession(true);
+			session.setAttribute("user", user);
 			response.sendRedirect("userprofile");
 			 //requestDispatcher=request.getRequestDispatcher("/userprofile");					
 		} else {

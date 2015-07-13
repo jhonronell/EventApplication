@@ -14,6 +14,8 @@
 	<script src="plugins/external/jquery/jquery.js"></script>
 	<script src="plugins/jquery-ui.js"></script>
 	<script src="plugins/jquery.timepicker.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/index.js"></script>
 	
 	<style> 
 		body { font-size:12px; }

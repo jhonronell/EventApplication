@@ -1,19 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<html>
-<head>
-    <title>Login Page</title>
-</head>
+<jsp:include page="include/header.jsp" />
 
-<h2>Hello, please log in:</h2>
-<br><br>
-<form action="authenticate" method="post">
-    <p><strong>Please Enter Your User Name: </strong>
-    <input type="text" name="username" size="25">
-    <p><p><strong>Please Enter Your Password: </strong>
-    <input type="password" size="15" name="password">
-    <p><p>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-</form>
-</html>
+    <div class="wrapper">
+	<div class="container">
+		
+   <img src="images/small-1300-6439108.png">
+    <div style="color:white">Enter Username and Password </div>
+		<form action="authenticate" method="post">
+			<input name="username" type="text" placeholder="username">
+			<input name="password" type="password" placeholder="password">
+			<button type="submit" id="login-button">Login</button>
+		</form>
+	</div>
+	
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+<jsp:include page="include/footer.html" />

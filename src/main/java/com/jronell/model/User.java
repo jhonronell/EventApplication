@@ -2,6 +2,7 @@ package com.jronell.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
@@ -41,8 +42,9 @@ public class User {
 	private ContactInformation contactInformation;
 	private Status status;
 	private UserType userType;
-	private InterestList interestList; 
+	private List<Interest> interestList; 
 	private String shoutOut;
+	private List<Event> events;
 	
 	
 	public int getUserId(){
@@ -84,11 +86,6 @@ public class User {
 		this.setContactInformation(contactInformation);
 	}
 
-	public void setInterest(InterestList newInterestList) {
-		// TODO Auto-generated method stub
-		this.interestList = newInterestList;
-	}
-
 
 
 	public void setUserType(UserType userType) {
@@ -121,12 +118,7 @@ public class User {
 		return userType;
 	}
 
-	public void getInterestList() {
-		// TODO Auto-generated method stub
-		 for(Interest i:  interestList.getInterestList()){
-			 System.out.println(i.getName());
-		 }
-	}
+
 
 	public String getUsername()
 	{	
@@ -182,7 +174,7 @@ public class User {
 		return address;
 	}
 
-	public InterestList getInterest() {
+	public List<Interest> getInterest() {
 		return interestList;
 	}
 
@@ -192,6 +184,24 @@ public class User {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public void setInterestList(List<Interest> interestList)
+	{
+		this.interestList = interestList;
+	}
+	
+	public void setEvents(List<Event> events) {
+		// TODO Auto-generated method stub
+		this.events = events;
+	}
+	public List<Event> getEvents() {
+		// TODO Auto-generated method stub
+		return this.events;
+	}
+	public List<Interest> getInterestList(){
+		// TODO Auto-generated method stub
+		return this.interestList;
 	}
 
 }

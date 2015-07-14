@@ -1,9 +1,6 @@
 <jsp:include page="include/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%
-		request.getAttribute("userprofile");
-		request.getAttribute("userEvents");
-		request.getAttribute("userInterest");
 		Object user = request.getAttribute("user");
 	%>
 	<script>
@@ -60,7 +57,7 @@
 		</div>
 		<div id="tabs-2">
 				<table class="pure-table pure-table-horizontal">
-					<c:forEach var="interest" items="${userInterest}">
+					<c:forEach var="interest" items="${user.interestList}">
 						<tr>
 							<td><c:out value="${interest.name}" /></td>
 							<td><c:out value="${interest.name}" /></td>
@@ -76,7 +73,7 @@
 					
 		
 				<table class="pure-table pure-table-horizontal">
-					<c:forEach var="event" items="${userEvents}">
+					<c:forEach var="event" items="${user.events}">
 						<tr>
 							<td><c:out value="${event.type}" /></td>
 							<td><c:out value="${event.name}" /></td>

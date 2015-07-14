@@ -41,20 +41,24 @@ public class UserProfileController extends HttpServlet {
 	
 		//session
 		HttpSession session = request.getSession();
-		User userVar = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 		
-		int userId = userVar.getUserId();
-		request.setAttribute("user",userVar );
-		
-	    User user = new User();
+		int userId = user.getUserId();
+	
 	    user.setUserId(userId);
 	//	user.setEventList(  eventList.getEvents( user.getId() ) );
-		EventService eventService = ServiceFactory.createEventService();
+		
+	    EventService eventService = ServiceFactory.createEventService();
 		InterestService interestService = ServiceFactory.createInterestService();
 		
+		user.setEvents(  eventService.getEventByUserId(userId) );
+		user.setInterestList(  interestService.getUserInterestList(userId)   );
+		
+		request.setAttribute("user",user );
+	
 		response.setContentType("text/html");
-		request.setAttribute("userEvents", eventService.getEventByUserId(userId));
-		request.setAttribute("userInterest", interestService.getUserInterestList(userId));
+		//request.setAttribute("userEvents", eventService.getEventByUserId(userId));
+		//request.setAttribute("userInterest",);
 		
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  
 		requestDispatcher.forward(request, response);  

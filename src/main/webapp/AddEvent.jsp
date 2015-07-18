@@ -11,6 +11,7 @@
 <div class="wrapper">
 	<div class="container">
  	<jsp:include page="include/userInfoMin.jsp" />
+
 	<form id="form1" name="form1" method="post"  class="pure-form" action="event">
 	 
 	<div id="tabs">
@@ -161,7 +162,8 @@
 	
 	
 	</form>
-	<ul class="bg-bubbles">
+	
+	 	<ul class="bg-bubbles">
 			<li></li>
 			<li></li>
 			<li></li>
@@ -169,33 +171,10 @@
 			<li></li>
 			<li></li>
 			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-				<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-				<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
+	
 		</ul>
 	
 </div></div>
-
 
 
 	<script>

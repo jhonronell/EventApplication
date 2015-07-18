@@ -1,7 +1,5 @@
 package com.jronell.model;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -45,7 +43,14 @@ public class User {
 	private List<Interest> interestList; 
 	private String shoutOut;
 	private List<Event> events;
+	private List<BucketListItem> bucketList;
 	
+	public void setBucketList(List<BucketListItem> bucketList){
+		this.bucketList = bucketList;
+	};
+	public List<BucketListItem> getBucketList(){
+		return this.bucketList;
+	};
 	
 	public int getUserId(){
 		return this.id;

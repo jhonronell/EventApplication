@@ -1,0 +1,16 @@
+.avatar{
+	z-index:2;
+	position:relative;
+}
+.addInterestForm {
+	display: none;
+}
+.interestName {
+	border: 1px solid gray;
+}
+.interestMainContent {
+	
+}
+.userProfile {
+	height: 100%;
+}

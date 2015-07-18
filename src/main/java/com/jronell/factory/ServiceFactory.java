@@ -1,16 +1,19 @@
 package com.jronell.factory;
 
 import com.jronell.dao.impl.AuthenticationDaoImpl;
+import com.jronell.dao.impl.BucketListDaoImpl;
 import com.jronell.dao.impl.EventDaoImpl;
 import com.jronell.dao.impl.InterestDaoImpl;
 import com.jronell.dao.impl.InterestTypeDaoImpl;
 import com.jronell.dao.impl.UserDaoImpl;
 import com.jronell.service.AuthenticationService;
+import com.jronell.service.BucketListService;
 import com.jronell.service.EventService;
 import com.jronell.service.InterestService;
 import com.jronell.service.InterestTypeService;
 import com.jronell.service.UserService;
 import com.jronell.serviceImpl.AuthenticationServiceImpl;
+import com.jronell.serviceImpl.BucketListServiceImpl;
 import com.jronell.serviceImpl.EventServiceImpl;
 import com.jronell.serviceImpl.InterestServiceImpl;
 import com.jronell.serviceImpl.InterestTypeServiceImpl;
@@ -41,6 +44,11 @@ public class ServiceFactory {
     	AuthenticationServiceImpl authenticationService = new AuthenticationServiceImpl();
     	authenticationService.setAuthenticationDao(new AuthenticationDaoImpl());
     	return authenticationService;
+    }
+    public static BucketListService createBucketListService(){
+    	BucketListServiceImpl bucketListService = new BucketListServiceImpl();
+    	bucketListService.setBucketListDao(new BucketListDaoImpl());
+    	return bucketListService;
     }
  
 }

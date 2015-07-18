@@ -51,7 +51,6 @@ public class EventDaoImpl implements EventDao {
 		    if (rs.next()) {
 		        eventId = rs.getInt(1);
 		    } else {
-
 		        // throw an exception from here
 		    }
 		    

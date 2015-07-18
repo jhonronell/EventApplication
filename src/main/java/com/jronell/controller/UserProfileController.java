@@ -10,13 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jronell.dao.impl.EventDaoImpl;
-import com.jronell.dao.impl.UserDaoImpl;
 import com.jronell.factory.ServiceFactory;
 import com.jronell.model.User;
+import com.jronell.service.BucketListService;
 import com.jronell.service.EventService;
 import com.jronell.service.InterestService;
-import com.jronell.service.UserService;
 
 /**
  * Servlet implementation class UserProfileController
@@ -48,9 +46,13 @@ public class UserProfileController extends HttpServlet {
 
 	    EventService eventService = ServiceFactory.createEventService();
 		InterestService interestService = ServiceFactory.createInterestService();
+		
+		BucketListService bucketListService = ServiceFactory.createBucketListService();
+		bucketListService.getUserBucketList(userId);
+		
 		user.setEvents(  eventService.getEventByUserId(userId) );
 		user.setInterestList(  interestService.getUserInterestList(userId)   );
-		
+		user.setBucketList(bucketListService.getUserBucketList(userId));
 		request.setAttribute("user",user );
 		response.setContentType("text/html");
 		

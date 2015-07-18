@@ -51,16 +51,14 @@ body {
 			</ul>
 			<div id="tabs-1">
 				<div>
-					<ul>
-						<li>${user.id}</li>
-						<li>${userprofile.lastName}</li>
-						<li>${userprofile.middleName}</li>
-
-					</ul>
-					<button class="button-secondary pure-button">Secondary
-						Button</button>
-					<button class="pure-button button-secondary">Secondary
-						Button</button>
+					<table class="pure-table pure-table-horizontal">
+						<c:forEach var="bucketList" items="${user.bucketList}">
+							<tr>
+								<td><c:out value="${bucketList.name}" /></td>
+								<td><c:out value="${bucketList.region}" /></td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 			</div>
 			<div id="tabs-2">

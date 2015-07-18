@@ -47,7 +47,7 @@ body {
 				<li><a href="#tabs-1">Bucket List</a></li>
 				<li><a href="#tabs-2">User Interest</a></li>
 				<li><a href="#tabs-3">My upcoming events</a></li>
-				<li><a href="#tabs-4">Suggested Events</a></li>
+
 			</ul>
 			<div id="tabs-1">
 				<div>
@@ -104,21 +104,7 @@ body {
 					</c:forEach>
 				</table>
 			</div>
-			<div id="tabs-4">
-				<button class="button-secondary pure-button" id="addEventBtn">Add</button>
-				<table class="pure-table pure-table-horizontal">
-					<c:forEach var="event" items="${user.events}">
-						<tr>
-							<td><c:out value="${event.type}" /></td>
-							<td><c:out value="${event.name}" /></td>
-							<td><c:out value="${event.eventStartDate}" /></td>
-							<td><c:out value="${event.eventEndDate}" /></td>
-							<td><c:out value="${event.eventStartDate}" /></td>
-							<td><c:out value="${event.status}" /></td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
+
 		</div>
 		<ul class="bg-bubbles">
 			<li></li>

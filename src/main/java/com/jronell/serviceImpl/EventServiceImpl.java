@@ -15,9 +15,9 @@ public class EventServiceImpl implements EventService {
 	private EventDao eventDao;
 
 	@Override
-	public void addEvent(Event event) {
+	public int addEvent(Event event) {
 		// TODO Auto-generated method stub
-	   eventDao.addEvent(event);
+	   return eventDao.addEvent(event);
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class AuthenticationDaoImpl implements AuthenticationDao {
 		    	     
 		    	String firstname = rs.getString("firstName");
 		    	int userId = rs.getInt("id");
-		    	String lastname = rs.getString("firstName");
+		    	String lastname = rs.getString("lastName");
 		    	user = new User();
 		        user.setFirstName( firstname );
 		        user.setUserId(userId);

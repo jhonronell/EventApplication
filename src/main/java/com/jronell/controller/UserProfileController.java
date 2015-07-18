@@ -37,28 +37,22 @@ public class UserProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	
 		//session
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		
+		String action= request.getParameter("act");
+		String eid= request.getParameter("eid");
+		request.setAttribute("action",action );
 		int userId = user.getUserId();
-	
 	    user.setUserId(userId);
-	//	user.setEventList(  eventList.getEvents( user.getId() ) );
-		
+
 	    EventService eventService = ServiceFactory.createEventService();
 		InterestService interestService = ServiceFactory.createInterestService();
-		
 		user.setEvents(  eventService.getEventByUserId(userId) );
 		user.setInterestList(  interestService.getUserInterestList(userId)   );
 		
 		request.setAttribute("user",user );
-	
 		response.setContentType("text/html");
-		//request.setAttribute("userEvents", eventService.getEventByUserId(userId));
-		//request.setAttribute("userInterest",);
 		
 		RequestDispatcher requestDispatcher=request.getRequestDispatcher("userprofile.jsp");  
 		requestDispatcher.forward(request, response);  

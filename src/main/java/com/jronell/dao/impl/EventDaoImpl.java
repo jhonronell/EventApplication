@@ -20,7 +20,7 @@ import com.jronell.service.EventService;
 public class EventDaoImpl implements EventDao {
 
 	@Override
-	public void addEvent(Event event) {
+	public int addEvent(Event event) {
 		// TODO Auto-generated method stub
 		
 		try {
@@ -63,7 +63,7 @@ public class EventDaoImpl implements EventDao {
 			event.address.setEventId(eventId);
 			addressDao.addEventAddress( event.getAddress());
 			
-			
+			return eventId;
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -72,6 +72,7 @@ public class EventDaoImpl implements EventDao {
 			
 		
 		}
+		return 0;
 				
 	}
 
@@ -93,16 +94,14 @@ public class EventDaoImpl implements EventDao {
 			Connection conn = conManager.getConnection();
 			Statement myStatement = conn.createStatement();
 			
-			String sql = "SELECT * FROM hopIn.Events where id=" + userId;
+			String sql = "SELECT * FROM hopIn.Events where organizing_user=" + userId;
 
 		    ResultSet rs = myStatement.executeQuery(sql);
 		    System.out.println(sql);
 		    while(rs.next()){
 		    	
 		    	System.out.println(rs.getString("type"));
-		    	
-		     
-		         EventType type = EventType.validate(rs.getString("type")); 
+		    	 EventType type = EventType.validate(rs.getString("type")); 
 		         String name = rs.getString("name");  
 		         String eventStartDate = rs.getString("startDate");  
 		         String eventEndDate = rs.getString("endDate");  

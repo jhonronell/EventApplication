@@ -15,7 +15,7 @@ public interface EventDao {
 
 	
 	
-	public void addEvent(Event event); 
+	public int addEvent(Event event); 
 	
 	public void updateEvent(Event event); 
 	

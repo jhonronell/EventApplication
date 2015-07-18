@@ -8,15 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jronell.factory.ServiceFactory;
 import com.jronell.model.Event;
 import com.jronell.model.EventAddress;
 import com.jronell.model.EventType;
 import com.jronell.model.Status;
+import com.jronell.model.User;
 import com.jronell.service.EventService;
-import com.jronell.service.InterestService;
 import com.jronell.service.InterestTypeService;
+import com.jronell.service.UserService;
 
 /**
  * Servlet implementation class EventController
@@ -40,15 +42,10 @@ public class EventController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		   
 		InterestTypeService interestService = ServiceFactory.createInterestTypeService();
-		
 		request.setAttribute("interestTypeList", interestService.getInterestTypes() );  
-        
 		RequestDispatcher rd=request.getRequestDispatcher("AddEvent.jsp");  
-        
 		rd.forward(request, response);  
-		
 	}
 
 	/**
@@ -57,6 +54,11 @@ public class EventController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user"); 
+			int organizerId = user.getUserId();
+			System.out.println(organizerId);
+			
 		   	EventType eventType = EventType.validate(request.getParameter("eventType"));
 		   	String name = request.getParameter("name");
 		   	String eventDateStart = request.getParameter("eventDateStart");
@@ -68,7 +70,6 @@ public class EventController extends HttpServlet {
 			
 		   	String category = request.getParameter("category");
 		   	
-		   	
 		   	String street = request.getParameter("street");
 		   	String brgy = request.getParameter("brgy");
 		   	String city = request.getParameter("city");
@@ -76,16 +77,15 @@ public class EventController extends HttpServlet {
 		   	String province = request.getParameter("province");
 		   	EventAddress address = new EventAddress(street,brgy,city,region,province);
 			   	
-		   	int organizerId = 1; 
+		   	 
 			event.setAddress(address);
 		    event.setOrganizerId(organizerId);
 		   	
 		    EventService eventService = ServiceFactory.createEventService();
-	        eventService.addEvent(event);
+		    int eventId = eventService.addEvent(event);
 	        
-			request.setAttribute("event1",event);  
-	        RequestDispatcher rd=request.getRequestDispatcher("display.jsp");  
-	        rd.forward(request, response);  
+	        response.sendRedirect("userprofile?act=event&eid=" + eventId);
+	        
 	}
 
 

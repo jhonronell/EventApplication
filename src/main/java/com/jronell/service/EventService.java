@@ -11,7 +11,7 @@ public interface EventService {
 	
 	public void deleteEvent(int eventId);
 	
-	public void addEvent(Event event);
+	public int addEvent(Event event);
 	
 	public List<Event> getAllEvents();
 	
